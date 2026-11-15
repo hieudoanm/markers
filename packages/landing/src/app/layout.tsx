@@ -25,6 +25,17 @@ export const metadata: Metadata = {
   },
   description:
     'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
+  keywords: [
+    'static site generator',
+    'Markdown',
+    'Rust',
+    'documentation site',
+    'Wikipedia import',
+    'MCP server',
+    'no Node.js',
+  ],
+  authors: [{ name: 'hieudoan', url: 'https://github.com/hieudoanm/pagers' }],
+  category: 'software',
   openGraph: {
     siteName: 'pagers',
     type: 'website',
@@ -37,6 +48,28 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', images: ['/og.png'] },
 };
 
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'pagers',
+      url: 'https://hieudoanm.github.io/pagers/',
+      description: 'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'pagers',
+      applicationCategory: 'DeveloperApplication',
+      description: 'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
+      url: 'https://hieudoanm.github.io/pagers/',
+      codeRepository: 'https://github.com/hieudoanm/pagers',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+  ]
+};
+
 interface RootLayoutProps {
   children: ReactNode;
 }
@@ -47,6 +80,10 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
     data-theme="pagers"
     className={`scroll-smooth antialiased motion-reduce:scroll-auto ${inter.className}`}>
     <body className="bg-base-100 text-base-content m-0 leading-relaxed">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <Navbar
         name="pagers"
         logoSrc={LOGO}
