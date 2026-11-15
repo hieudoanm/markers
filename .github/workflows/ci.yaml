@@ -111,7 +111,7 @@ jobs:
         run: |
           gh release create latest \
             --title "pagers (latest)" \
-            --notes-file README.md \
+            --notes-file RELEASE.md \
             --target "$GITHUB_SHA" \
             dist/*
 
