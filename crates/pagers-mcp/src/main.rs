@@ -162,7 +162,63 @@ fn to_json(value: &Value) -> Result<String, ErrorData> {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let args: Vec<String> = std::env::args().collect();
+    let flag = |name: &str| {
+        args.iter()
+            .position(|a| a == name)
+            .and_then(|i| args.get(i + 1).cloned())
+    };
+    if let Some(addr) = flag("--http") {
+        let token = flag("--token").or_else(|| std::env::var("MCP_AUTH_TOKEN").ok());
+        return serve_http(&addr, token).await;
+    }
     let service = Pagers.serve(stdio()).await?;
     service.waiting().await?;
+    Ok(())
+}
+
+/// Serve MCP over streamable HTTP on `addr` (POST /mcp, plus GET SSE and
+/// DELETE session management). When `token` is set, requests must carry
+/// `Authorization: Bearer <token>`.
+async fn serve_http(addr: &str, token: Option<String>) -> Result<(), Box<dyn std::error::Error>> {
+    use rmcp::transport::streamable_http_server::{
+        session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
+    };
+
+    let service = std::sync::Arc::new(StreamableHttpService::new(
+        || Ok(Pagers),
+        std::sync::Arc::new(LocalSessionManager::default()),
+        StreamableHttpServerConfig::default(),
+    ));
+    let svc = std::sync::Arc::clone(&service);
+    let mut app = axum::Router::new().route(
+        "/mcp",
+        axum::routing::any(move |req: axum::extract::Request| {
+            let svc = std::sync::Arc::clone(&svc);
+            async move { svc.handle(req).await }
+        }),
+    );
+    if let Some(expected) = token {
+        app = app.layer(axum::middleware::from_fn_with_state(
+            expected,
+            |axum::extract::State(expected): axum::extract::State<String>,
+             req: axum::extract::Request,
+             next: axum::middleware::Next| async move {
+                let ok = req
+                    .headers()
+                    .get(axum::http::header::AUTHORIZATION)
+                    .and_then(|v| v.to_str().ok())
+                    .is_some_and(|v| v == format!("Bearer {expected}"));
+                if ok {
+                    Ok(next.run(req).await)
+                } else {
+                    Err(axum::http::StatusCode::UNAUTHORIZED)
+                }
+            },
+        ));
+    }
+    let listener = tokio::net::TcpListener::bind(addr).await?;
+    eprintln!("[mcp] streamable-http listening on http://{addr}/mcp");
+    axum::serve(listener, app).await?;
     Ok(())
 }
