@@ -1,0 +1,5 @@
+src-tauri/gen
+src-tauri/target
+out
+.next
+node_modules

@@ -83,6 +83,15 @@ description, revision id and timestamp as JSON. `scripts/examples.sh` crawls a
 whole link graph from a seed article. See [Wikipedia](../content/wiki.md) and
 [Scripts](../project/scripts.md).
 
+## PDF → Markdown
+
+`markers grobid` converts PDF articles to Markdown via GROBID — YAML frontmatter
+(title, authors, year, journal, DOI), DOI-linked references — then indexes them
+into a SQLite corpus with `search`, `stats`, and a self-contained citation-graph
+dashboard, and serves the corpus to AI agents over MCP. A Tauri desktop app in
+`packages/desktop` wraps the same PDF → TEI → Markdown pipeline in a native
+dropzone (local only — no uploads). See [Commands](commands.md#markers-grobid).
+
 ## MCP server
 
 `markers-mcp` speaks the Model Context Protocol over stdio, exposing

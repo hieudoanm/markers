@@ -109,6 +109,33 @@ Page types, theming, the `landing.yaml` schema, and the full build output
 (`index.html`, `styles.css`, `og/og.svg`, and the site metadata files) are
 covered in [Landing pages](landing.md).
 
+## `markers grobid`
+
+Convert PDF articles to Markdown via
+[GROBID](https://github.com/kermitt2/grobid) TEI XML, then index them into a
+searchable corpus. Running `markers grobid` with no subcommand converts every
+`*.pdf` in `./pdf` (resumable — existing TEI/Markdown outputs are reused).
+
+| Command                                 | Does                                                          |
+| --------------------------------------- | ------------------------------------------------------------- |
+| `markers grobid [--enrich]`             | Convert `./pdf` → `./tei`, `./md`, and the `.grobid/` corpus  |
+| `markers grobid convert`                | Same as above, explicit                                       |
+| `markers grobid search <query>`         | Substring search over title/authors/journal/DOI/abstract/type |
+| `markers grobid stats`                  | Works, references, year span, top authors/cited rankings      |
+| `markers grobid graph [--db] [--out]`   | Write the citation dashboard to `.grobid/index.html`          |
+| `markers grobid mcp [--http] [--token]` | Serve the corpus to AI agents over MCP (stdio or HTTP)        |
+
+Converted Markdown gets YAML frontmatter (title, authors, year, journal,
+volume/issue/pages, DOI) and a `## References` section with DOI-linked
+citations. `--enrich` (or `GROBID_ENRICH=1`) adds Crossref `type`/`cited_by`.
+
+A GROBID backend is required only when TEI files are missing: a running instance
+is reused, `GROBID_URL` points at a remote one, `GROBID_LOCAL_BIN` (or the
+default install path) spawns a local JVM service, and otherwise a Docker
+container (`grobid/grobid` image) is started automatically.
+`GROBID_DATA_DIR`/`ARTICLES_DATA_DIR` select the data directory; all corpus
+artifacts land in `<data-dir>/.grobid/`.
+
 ## Exit codes
 
 All commands exit non-zero on failure with a `markers <area>:`-prefixed error on
