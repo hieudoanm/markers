@@ -1,0 +1,12 @@
+[package]
+name = "markers-build"
+version = "0.0.1"
+edition = "2021"
+description = "Static site build pipeline for markers"
+license = "GPL-3.0"
+
+[dependencies]
+markers-graph = { path = "../markers-graph" }
+markers-markdown = { path = "../markers-markdown" }
+markers-site = { path = "../markers-site" }
+markers-theme = { path = "../markers-theme" }

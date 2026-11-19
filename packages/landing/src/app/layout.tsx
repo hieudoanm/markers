@@ -7,9 +7,9 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const GITHUB = 'https://github.com/hieudoanm/pagers';
+const GITHUB = 'https://github.com/hieudoanm/markers';
 const LOGO =
-  process.env.NODE_ENV === 'production' ? '/pagers/logo.png' : '/logo.png';
+  process.env.NODE_ENV === 'production' ? '/markers/logo.png' : '/logo.png';
 const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'vs docsify', href: '#compare' },
@@ -18,10 +18,10 @@ const NAV_LINKS = [
 ];
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hieudoanm.github.io/pagers/'),
+  metadataBase: new URL('https://hieudoanm.github.io/markers/'),
   title: {
-    default: 'pagers — static site generator for Markdown docs',
-    template: '%s — pagers',
+    default: 'markers — static site generator for Markdown docs',
+    template: '%s — markers',
   },
   description:
     'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
@@ -34,40 +34,41 @@ export const metadata: Metadata = {
     'MCP server',
     'no Node.js',
   ],
-  authors: [{ name: 'hieudoan', url: 'https://github.com/hieudoanm/pagers' }],
+  authors: [{ name: 'hieudoan', url: 'https://github.com/hieudoanm/markers' }],
   category: 'software',
   openGraph: {
-    siteName: 'pagers',
+    siteName: 'markers',
     type: 'website',
-    title: 'pagers — static site generator for Markdown docs',
+    title: 'markers — static site generator for Markdown docs',
     description:
       'Markdown folders → static HTML in one Rust binary. Clean URLs, themes, graphs, Wikipedia import, MCP server.',
-    url: 'https://hieudoanm.github.io/pagers/',
+    url: 'https://hieudoanm.github.io/markers/',
     images: ['/og.png'],
   },
   twitter: { card: 'summary_large_image', images: ['/og.png'] },
 };
-
 
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'WebSite',
-      name: 'pagers',
-      url: 'https://hieudoanm.github.io/pagers/',
-      description: 'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
+      name: 'markers',
+      url: 'https://hieudoanm.github.io/markers/',
+      description:
+        'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'pagers',
+      name: 'markers',
       applicationCategory: 'DeveloperApplication',
-      description: 'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
-      url: 'https://hieudoanm.github.io/pagers/',
-      codeRepository: 'https://github.com/hieudoanm/pagers',
+      description:
+        'A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.',
+      url: 'https://hieudoanm.github.io/markers/',
+      codeRepository: 'https://github.com/hieudoanm/markers',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
-  ]
+  ],
 };
 
 interface RootLayoutProps {
@@ -77,7 +78,7 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html
     lang="en"
-    data-theme="pagers"
+    data-theme="markers"
     className={`scroll-smooth antialiased motion-reduce:scroll-auto ${inter.className}`}>
     <body className="bg-base-100 text-base-content m-0 leading-relaxed">
       <script
@@ -85,14 +86,14 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
       <Navbar
-        name="pagers"
+        name="markers"
         logoSrc={LOGO}
         links={NAV_LINKS}
         githubUrl={GITHUB}
       />
       {children}
       <Footer
-        name="pagers"
+        name="markers"
         tagline="Static sites from Markdown, in one Rust binary · MIT"
         githubUrl={GITHUB}
       />

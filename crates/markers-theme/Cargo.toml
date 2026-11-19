@@ -1,0 +1,10 @@
+[package]
+name = "markers-theme"
+version = "0.0.1"
+edition = "2021"
+description = "Embedded theme assets and page templates for markers"
+license = "GPL-3.0"
+
+[dependencies]
+markers-markdown = { path = "../markers-markdown" }
+markers-site = { path = "../markers-site" }

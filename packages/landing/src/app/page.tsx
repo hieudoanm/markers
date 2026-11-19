@@ -16,48 +16,48 @@ import {
 } from 'react-icons/lu';
 
 export const metadata: Metadata = {
-  title: { absolute: 'pagers — static site generator for Markdown docs' },
+  title: { absolute: 'markers — static site generator for Markdown docs' },
 };
 
 const LOGO =
-  process.env.NODE_ENV === 'production' ? '/pagers/logo.png' : '/logo.png';
-const GITHUB = 'https://github.com/hieudoanm/pagers';
+  process.env.NODE_ENV === 'production' ? '/markers/logo.png' : '/logo.png';
+const GITHUB = 'https://github.com/hieudoanm/markers';
 
 interface CompareRow {
   feature: string;
-  pagers: string;
+  markers: string;
   docsify: string;
 }
 
 const COMPARISON: CompareRow[] = [
   {
     feature: 'Rendering',
-    pagers: 'Ahead of time → static HTML',
+    markers: 'Ahead of time → static HTML',
     docsify: 'In the browser at runtime',
   },
   {
     feature: 'JavaScript required',
-    pagers: 'None for content',
+    markers: 'None for content',
     docsify: 'Required',
   },
   {
     feature: 'Hosting',
-    pagers: 'Any static host',
+    markers: 'Any static host',
     docsify: 'Needs correct SPA fallback',
   },
   {
     feature: 'Offline / cacheable',
-    pagers: 'Fully',
+    markers: 'Fully',
     docsify: 'Only the shell',
   },
   {
     feature: 'Search engines',
-    pagers: 'Full HTML + sitemap',
+    markers: 'Full HTML + sitemap',
     docsify: 'Limited',
   },
   {
     feature: 'Runtime',
-    pagers: 'One Rust binary',
+    markers: 'One Rust binary',
     docsify: 'Node at build time',
   },
 ];
@@ -109,7 +109,7 @@ const FEATURES: Feature[] = [
   {
     icon: LuZap,
     title: 'Zero configuration',
-    body: 'Point pagers at a folder of Markdown and it builds a complete site — sidebar navigation, clean trailing-slash URLs, and an "On this page" outline are generated for you.',
+    body: 'Point markers at a folder of Markdown and it builds a complete site — sidebar navigation, clean trailing-slash URLs, and an "On this page" outline are generated for you.',
   },
   {
     icon: LuFileText,
@@ -129,17 +129,17 @@ const FEATURES: Feature[] = [
   {
     icon: LuLayoutTemplate,
     title: 'Landing pages too',
-    body: 'pagers landing builds a whole single-page site — marketing, waitlist, docs hub, linktree — from one landify.yaml, with 12 layouts and 64 themes.',
+    body: 'markers landing builds a whole single-page site — marketing, waitlist, docs hub, linktree — from one landing.yaml, with 12 layouts and 64 themes.',
   },
   {
     icon: LuGlobe,
     title: 'Wikipedia importer',
-    body: 'pagers wiki convert turns any Wikipedia article into clean local Markdown, rewriting internal links to filenames so whole wikis become browsable sites.',
+    body: 'markers wiki convert turns any Wikipedia article into clean local Markdown, rewriting internal links to filenames so whole wikis become browsable sites.',
   },
   {
     icon: LuBot,
     title: 'MCP server',
-    body: 'pagers-mcp exposes build, serve and site inspection as MCP tools — let your editor or agent work with the docs directly.',
+    body: 'markers-mcp exposes build, serve and site inspection as MCP tools — let your editor or agent work with the docs directly.',
   },
 ];
 
@@ -157,7 +157,7 @@ const LandingPage = (): JSX.Element => (
         }
         description={
           <>
-            pagers turns a folder of{' '}
+            markers turns a folder of{' '}
             <code className="border-base-300 bg-base-200 rounded border px-1.5 py-0.5 font-mono text-sm">
               .md
             </code>{' '}
@@ -177,7 +177,7 @@ const LandingPage = (): JSX.Element => (
           lines={[
             [
               { t: '$ ', c: 'prompt' },
-              { t: 'pagers', c: 'cmd' },
+              { t: 'markers', c: 'cmd' },
               { t: ' build ', c: 'dim' },
               { t: './docs', c: 'url' },
               { t: ' --output ', c: 'dim' },
@@ -189,7 +189,7 @@ const LandingPage = (): JSX.Element => (
             ],
             [
               { t: '$ ', c: 'prompt' },
-              { t: 'pagers', c: 'cmd' },
+              { t: 'markers', c: 'cmd' },
               { t: ' serve ', c: 'dim' },
               { t: 'dist', c: 'url' },
             ],
@@ -214,7 +214,7 @@ const LandingPage = (): JSX.Element => (
         <div className="mx-auto w-full max-w-6xl px-5">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="m-0 mb-2 text-2xl leading-tight font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-              pagers vs docsify.
+              markers vs docsify.
             </h2>
             <p className="mt-3 text-lg text-gray-500">
               Same Markdown-in, docs-out idea — opposite rendering model.
@@ -230,7 +230,7 @@ const LandingPage = (): JSX.Element => (
                   </th>
                   <th className="bg-primary/10 border-b border-l border-gray-200 px-5 py-3.5 text-left align-bottom">
                     <span className="text-primary flex items-center gap-2 font-bold">
-                      pagers
+                      markers
                       <span className="badge badge-primary uppercase">
                         pick
                       </span>
@@ -248,7 +248,7 @@ const LandingPage = (): JSX.Element => (
                       {row.docsify}
                     </td>
                     <td className="bg-primary/5 group-hover:bg-primary/10 border-b border-l border-gray-200 px-5 py-3.5 align-top font-medium text-gray-900">
-                      {row.pagers}
+                      {row.markers}
                     </td>
                   </tr>
                 ))}
@@ -269,7 +269,7 @@ const LandingPage = (): JSX.Element => (
               Install the binary, point it at a Markdown folder, serve the
               result — or scaffold a landing page with{' '}
               <code className="rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm">
-                pagers landing new
+                markers landing new
               </code>
               .
             </p>
@@ -281,7 +281,7 @@ const LandingPage = (): JSX.Element => (
                   { t: '$ ', c: 'prompt' },
                   { t: 'curl', c: 'cmd' },
                   {
-                    t: ' -fsSL https://raw.githubusercontent.com/hieudoanm/pagers/main/scripts/install.sh',
+                    t: ' -fsSL https://raw.githubusercontent.com/hieudoanm/markers/main/scripts/install.sh',
                     c: 'url',
                   },
                   { t: ' | sh', c: 'dim' },
@@ -291,11 +291,11 @@ const LandingPage = (): JSX.Element => (
                   { t: 'cargo', c: 'cmd' },
                   { t: ' install ', c: 'dim' },
                   { t: '--path', c: 'flag' },
-                  { t: ' crates/pagers-cli', c: 'dim' },
+                  { t: ' crates/markers-cli', c: 'dim' },
                 ],
                 [
                   { t: '➜ ', c: 'prompt' },
-                  { t: 'installed pagers ', c: 'dim' },
+                  { t: 'installed markers ', c: 'dim' },
                   { t: '~/.local/bin', c: 'ok' },
                 ],
               ]}
@@ -304,7 +304,7 @@ const LandingPage = (): JSX.Element => (
               lines={[
                 [
                   { t: '$ ', c: 'prompt' },
-                  { t: 'pagers', c: 'cmd' },
+                  { t: 'markers', c: 'cmd' },
                   { t: ' build ', c: 'dim' },
                   { t: './docs', c: 'url' },
                   { t: ' --output ', c: 'dim' },
@@ -319,7 +319,7 @@ const LandingPage = (): JSX.Element => (
                 ],
                 [
                   { t: '$ ', c: 'prompt' },
-                  { t: 'pagers', c: 'cmd' },
+                  { t: 'markers', c: 'cmd' },
                   { t: ' serve ', c: 'dim' },
                   { t: 'dist', c: 'url' },
                   { t: ' --port ', c: 'dim' },
@@ -336,11 +336,11 @@ const LandingPage = (): JSX.Element => (
           <p className="mt-8 text-center text-sm text-gray-500">
             Or generate a landing page:{' '}
             <code className="rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm">
-              pagers landing new --type product
+              markers landing new --type product
             </code>{' '}
             →{' '}
             <code className="rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm">
-              pagers landing build -o public/
+              markers landing build -o public/
             </code>
             . Full walkthrough in{' '}
             <Link href="/docs/guide/getting-started/" className="text-primary">
@@ -357,7 +357,7 @@ const LandingPage = (): JSX.Element => (
           <>
             One binary, one{' '}
             <code className="rounded border border-gray-200 bg-gray-50 px-1 py-px font-mono text-sm">
-              pagers build
+              markers build
             </code>
             , one static folder — ready for GitHub Pages, any CDN, or a plain
             web server.

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Demo pipeline: optionally crawl Wikipedia articles into
-# examples/wiki/<lang>/, then build them into a demo pagers site at
-# examples/demo/. --landing additionally exercises `pagers landing`
-# against examples/landing/landify.yaml (index.html is gitignored).
+# examples/wiki/<lang>/, then build them into a demo markers site at
+# examples/demo/. --landing additionally exercises `markers landing`
+# against examples/landing/landing.yaml (index.html is gitignored).
 #
 #   ./scripts/examples.sh --crawl            # crawl + build
 #   ./scripts/examples.sh --serve            # build existing files + serve :8080
@@ -12,7 +12,7 @@
 #   MAX_PAGES=10 DELAY=2 ./scripts/examples.sh --crawl
 #
 # Env: MAX_PAGES (default 100 new pages per crawl), DELAY (seconds between
-#      requests, default 1), PAGERS (binary override), PORT (default 8080),
+#      requests, default 1), MARKERS (binary override), PORT (default 8080),
 #      LANDING_DIR (default examples/landing)
 set -euo pipefail
 
@@ -40,15 +40,15 @@ done
 log() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 die() { printf '\033[1;31merror:\033[0m %s\n' "$*" >&2; exit 1; }
 
-# Resolve the pagers binary: PATH → repo release build → cargo run.
-if [ -n "${PAGERS:-}" ]; then
-  PAGERS_BIN="$PAGERS"
-elif command -v pagers >/dev/null 2>&1; then
-  PAGERS_BIN="pagers"
-elif [ -x "$ROOT/target/release/pagers" ]; then
-  PAGERS_BIN="$ROOT/target/release/pagers"
+# Resolve the markers binary: PATH → repo release build → cargo run.
+if [ -n "${MARKERS:-}" ]; then
+  MARKERS_BIN=("$MARKERS")
+elif command -v markers >/dev/null 2>&1; then
+  MARKERS_BIN=(markers)
+elif [ -x "$ROOT/target/release/markers" ]; then
+  MARKERS_BIN=("$ROOT/target/release/markers")
 else
-  PAGERS_BIN="cargo run --quiet --manifest-path $ROOT/Cargo.toml -p pagers-cli --"
+  MARKERS_BIN=(cargo run --quiet --manifest-path "$ROOT/Cargo.toml" -p markers-cli --)
 fi
 
 # --- Crawl: incremental BFS over internal /wiki/ links. Already-downloaded
@@ -108,7 +108,7 @@ crawl() {
 
     local stamp="$langdir/.stamp"; touch "$stamp"
     local err="$(mktemp)"
-    if $PAGERS_BIN wiki convert "$url" -o "$langdir/" --quiet 2>"$err"; then
+    if "${MARKERS_BIN[@]}" wiki convert "$url" -o "$langdir/" --quiet 2>"$err"; then
       rm -f "$err"
       count=$((count + 1))
       local new_md="$(find "$langdir" -maxdepth 1 -name '*.md' -newer "$stamp" | head -1)"
@@ -120,9 +120,9 @@ crawl() {
     else
       rm -f "$stamp"
       nfailed=$((nfailed + 1))
-      # Surface pagers' own error (rate limit, 404, timeout, …) instead of
+      # Surface markers' own error (rate limit, 404, timeout, …) instead of
       # a bare "failed". Rate limits get extra backoff before the next try.
-      local reason="$(head -1 "$err" | sed 's/^pagers wiki: //')"
+      local reason="$(head -1 "$err" | sed 's/^markers wiki: //')"
       rm -f "$err"
       echo "$url" >> "$failed"
       printf '\033[1;33mwarn:\033[0m %s — %s\n' "$url" "${reason:-unknown error}" >&2
@@ -139,35 +139,35 @@ crawl() {
 }
 
 # --- Build the demo site. Internal .md links resolve to clean URLs, so
-# the wiki set becomes a browsable site. No index.md → pagers generates a
+# the wiki set becomes a browsable site. No index.md → markers generates a
 # landing page from the nav.
 build() {
   log "Building demo site → $SITE_DIR"
-  "$PAGERS_BIN" build "$WIKI_DIR" --output "$SITE_DIR"
+  "${MARKERS_BIN[@]}" build "$WIKI_DIR" --output "$SITE_DIR"
 }
 
 serve_site() {
   log "Serving on http://localhost:$PORT (Ctrl+C to stop)"
   if [ "$LANDING" -eq 1 ]; then
-    exec "$PAGERS_BIN" landing preview --dir "$LANDING_DIR" --port "$PORT"
+    exec "${MARKERS_BIN[@]}" landing preview --dir "$LANDING_DIR" --port "$PORT"
   fi
-  exec "$PAGERS_BIN" serve "$WIKI_DIR" --output "$SITE_DIR" --port "$PORT"
+  exec "${MARKERS_BIN[@]}" serve "$WIKI_DIR" --output "$SITE_DIR" --port "$PORT"
 }
 
-# --- Landing page demo: scaffold a landify.yaml when missing, then run the
+# --- Landing page demo: scaffold a landing.yaml when missing, then run the
 # same validate → build pipeline a user would. Output stays in
-# examples/landing/ (index.html is gitignored; landify.yaml is tracked).
+# examples/landing/ (index.html is gitignored; landing.yaml is tracked).
 landing() {
-  local yaml="$LANDING_DIR/landify.yaml"
+  local yaml="$LANDING_DIR/landing.yaml"
   mkdir -p "$LANDING_DIR"
   if [ ! -f "$yaml" ]; then
     log "Scaffolding $yaml"
-    "$PAGERS_BIN" landing new --file "$yaml" --type docs
+    "${MARKERS_BIN[@]}" landing new --file "$yaml" --page-type docs
   fi
   log "Validating $yaml"
-  "$PAGERS_BIN" landing validate --file "$yaml"
+  "${MARKERS_BIN[@]}" landing validate --file "$yaml"
   log "Building landing page → $LANDING_DIR/index.html"
-  "$PAGERS_BIN" landing build --file "$yaml" --output "$LANDING_DIR/index.html"
+  "${MARKERS_BIN[@]}" landing build --file "$yaml" --output "$LANDING_DIR/index.html"
 }
 
 [ "$CRAWL" -eq 1 ] && crawl
@@ -179,7 +179,7 @@ else
 fi
 [ "$SERVE" -eq 1 ] && serve_site
 if [ "$LANDING" -eq 1 ] && [ "$CRAWL" -eq 0 ]; then
-  log "Done. Preview with: $PAGERS_BIN landing preview --dir $LANDING_DIR --port $PORT"
+  log "Done. Preview with: markers landing preview --dir $LANDING_DIR --port $PORT"
 else
-  log "Done. Serve with: $PAGERS_BIN serve $WIKI_DIR --output $SITE_DIR --port $PORT"
+  log "Done. Serve with: markers serve $WIKI_DIR --output $SITE_DIR --port $PORT"
 fi

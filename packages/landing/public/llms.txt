@@ -1,31 +1,31 @@
-# pagers
+# markers
 
 > A single Rust binary that turns a folder of Markdown into a fast, self-contained static site — clean URLs, navigation, themes, a page graph, and a Wikipedia importer. No Node, no runtime.
 
-- Repository: https://github.com/hieudoanm/pagers
-- Site: https://hieudoanm.github.io/pagers/
+- Repository: https://github.com/hieudoanm/markers
+- Site: https://hieudoanm.github.io/markers/
 
 ## Documentation
 
 ### content
 
-- [Markdown features](https://hieudoanm.github.io/pagers/docs/content/markdown/)
-- [The graph page](https://hieudoanm.github.io/pagers/docs/content/graph/)
-- [Theming](https://hieudoanm.github.io/pagers/docs/content/theming/)
-- [Wikipedia → Markdown](https://hieudoanm.github.io/pagers/docs/content/wiki/)
+- [Markdown features](https://hieudoanm.github.io/markers/docs/content/markdown/)
+- [The graph page](https://hieudoanm.github.io/markers/docs/content/graph/)
+- [Theming](https://hieudoanm.github.io/markers/docs/content/theming/)
+- [Wikipedia → Markdown](https://hieudoanm.github.io/markers/docs/content/wiki/)
 ### guide
 
-- [Commands](https://hieudoanm.github.io/pagers/docs/guide/commands/)
-- [Configuration](https://hieudoanm.github.io/pagers/docs/guide/configuration/)
-- [Features](https://hieudoanm.github.io/pagers/docs/guide/features/)
-- [Getting started](https://hieudoanm.github.io/pagers/docs/guide/getting-started/)
-- [Landing pages](https://hieudoanm.github.io/pagers/docs/guide/landing/)
+- [Commands](https://hieudoanm.github.io/markers/docs/guide/commands/)
+- [Configuration](https://hieudoanm.github.io/markers/docs/guide/configuration/)
+- [Features](https://hieudoanm.github.io/markers/docs/guide/features/)
+- [Getting started](https://hieudoanm.github.io/markers/docs/guide/getting-started/)
+- [Landing pages](https://hieudoanm.github.io/markers/docs/guide/landing/)
 ### overview
 
-- [pagers documentation](https://hieudoanm.github.io/pagers/docs/)
+- [markers documentation](https://hieudoanm.github.io/markers/docs/)
 ### project
 
-- [Architecture](https://hieudoanm.github.io/pagers/docs/project/architecture/)
-- [Deploy](https://hieudoanm.github.io/pagers/docs/project/deploy/)
-- [MCP server](https://hieudoanm.github.io/pagers/docs/project/mcp/)
-- [Scripts](https://hieudoanm.github.io/pagers/docs/project/scripts/)
+- [Architecture](https://hieudoanm.github.io/markers/docs/project/architecture/)
+- [Deploy](https://hieudoanm.github.io/markers/docs/project/deploy/)
+- [MCP server](https://hieudoanm.github.io/markers/docs/project/mcp/)
+- [Scripts](https://hieudoanm.github.io/markers/docs/project/scripts/)

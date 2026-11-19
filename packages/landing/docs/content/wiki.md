@@ -5,21 +5,21 @@ order: 7
 
 # Wikipedia → Markdown
 
-`pagers wiki` turns a Wikipedia article URL into clean, well-structured Markdown
-— useful for archiving articles into a `pagers` site or feeding them to an LLM.
-No API key required; it uses the public MediaWiki REST API.
+`markers wiki` turns a Wikipedia article URL into clean, well-structured
+Markdown — useful for archiving articles into a `markers` site or feeding them
+to an LLM. No API key required; it uses the public MediaWiki REST API.
 
 ```bash
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" -o rust.md
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --format json
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --include-references
-pagers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" -o rust.md
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --format json
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --include-references
+markers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
 ```
 
 ## How it works
 
-The pipeline lives in `crates/pagers-wiki` as independent stages — the same
+The pipeline lives in `crates/markers-wiki` as independent stages — the same
 stages could serve other sites later:
 
 1. **URL parsing** — accepts `https://<lang>.wikipedia.org/wiki/<title>`,
@@ -64,7 +64,7 @@ on-disk name, derived from the title (`Rust (programming language)` →
 appended:
 
 ```bash
-pagers wiki convert "<url>" -o ./articles/   # → ./articles/rust_programming_language.md
+markers wiki convert "<url>" -o ./articles/   # → ./articles/rust_programming_language.md
 ```
 
 ## Preserved vs. removed
@@ -82,7 +82,7 @@ messages, tracking parameters, reference markers (unless requested).
 ## Errors
 
 Invalid URL, unsupported domain, missing article, rate limiting, timeouts and
-empty content all exit non-zero with a descriptive `pagers wiki:` error. Be
+empty content all exit non-zero with a descriptive `markers wiki:` error. Be
 polite: the
 [examples.sh crawler](../project/scripts.md#examplessh--wikipedia-crawler--demo-site)
 spaces requests 1s apart by default.

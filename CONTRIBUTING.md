@@ -1,6 +1,6 @@
-# Contributing to pagers
+# Contributing to markers
 
-Thanks for contributing to pagers, a static site generator for documentation —
+Thanks for contributing to markers, a static site generator for documentation —
 point it at a folder of Markdown and get a complete static site plus a link
 graph.
 
@@ -8,22 +8,22 @@ graph.
 
 A Cargo workspace with two binaries and six library crates under `crates/`:
 
-- `pagers-cli` — the `pagers` binary (build, serve, init, wiki).
-- `pagers-mcp` — the `pagers-mcp` MCP server over stdio.
-- `pagers-build`, `pagers-site`, `pagers-markdown`, `pagers-theme`,
-  `pagers-graph`, `pagers-wiki` — pipeline, discovery, rendering, graph, and
+- `markers-cli` — the `markers` binary (build, serve, init, wiki).
+- `markers-mcp` — the `markers-mcp` MCP server over stdio.
+- `markers-build`, `markers-site`, `markers-markdown`, `markers-theme`,
+  `markers-graph`, `markers-wiki` — pipeline, discovery, rendering, graph, and
   Wikipedia import.
 - `packages/landing` — docs site deployed to GitHub Pages.
 
-Dependency direction: `pagers-cli`/`pagers-mcp` → `pagers-build`/
-`pagers-theme`/`pagers-graph` → `pagers-markdown` → `pagers-site`. Keep it
+Dependency direction: `markers-cli`/`markers-mcp` → `markers-build`/
+`markers-theme`/`markers-graph` → `markers-markdown` → `markers-site`. Keep it
 acyclic.
 
 ## Setup
 
 ```bash
-git clone https://github.com/hieudoanm/pagers.git
-cd pagers
+git clone https://github.com/hieudoanm/markers.git
+cd markers
 cargo build
 ```
 
@@ -38,7 +38,7 @@ cargo test --workspace
 ## Conventions
 
 - The directory layout is the configuration — no config file beyond optional
-  `pagers.yaml` and frontmatter.
+  `markers.yaml` and frontmatter.
 - Internal Markdown links must be rewritten to clean trailing-slash URLs;
   broken links stay untouched so they remain visible.
 - Keep crates lean; errors are `Result<_, String>`.

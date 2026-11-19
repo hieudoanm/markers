@@ -5,12 +5,12 @@ order: 1
 
 # Features
 
-Everything `pagers` does, in one place. Each feature links to the page that
+Everything `markers` does, in one place. Each feature links to the page that
 documents it in detail.
 
 ## Zero configuration
 
-Point `pagers build` at a folder of Markdown and get a site. The directory
+Point `markers build` at a folder of Markdown and get a site. The directory
 layout **is** the configuration — no `config.js`, no plugin list, no build
 pipeline to maintain. See [Configuration](configuration.md).
 
@@ -29,7 +29,7 @@ Every page publishes at a trailing-slash URL (`/guide/install/` →
 `guide/install/index.html`), so the output works on **any** static host — GitHub
 Pages, Cloudflare Pages, Netlify, S3, a plain `python3 -m http.server` — with no
 `_redirects` file or server config. See
-[Commands](commands.md#pagers-build-content).
+[Commands](commands.md#markers-build-content).
 
 ## File-tree navigation
 
@@ -56,13 +56,13 @@ built sites are fully self-contained. See [Theming](../content/theming.md).
 
 Every build writes an interactive `graph.html`: a force-directed map of how
 every page links to every other, with node details and theme support. It's
-linked from every page's header, and `pagers graph` emits the same data as
+linked from every page's header, and `markers graph` emits the same data as
 standalone HTML, JSON or Graphviz DOT. See [Graph](../content/graph.md).
 
 ## Landing pages
 
-`pagers landing` builds a complete single-page site — marketing page, waitlist,
-docs hub, linktree — from one `landify.yaml`. Twelve page types, 64 themes (or
+`markers landing` builds a complete single-page site — marketing page, waitlist,
+docs hub, linktree — from one `landing.yaml`. Twelve page types, 64 themes (or
 eight explicit colors expanded into a full contrast-checked token set), an OG
 social card, and a full metadata set (`styles.css`, favicon, robots, sitemap,
 humans, manifest, llms.txt). Pure static HTML + CSS, zero JavaScript. See
@@ -70,24 +70,24 @@ humans, manifest, llms.txt). Pure static HTML + CSS, zero JavaScript. See
 
 ## `basePath` for sub-path hosting
 
-One field (`basePath: /pagers`) prefixes every generated URL — links, assets,
+One field (`basePath: /markers`) prefixes every generated URL — links, assets,
 the graph page — so the same `dist/` deploys correctly under a project path or a
-custom domain path. See [Configuration](configuration.md#pagersyaml).
+custom domain path. See [Configuration](configuration.md#markersyaml).
 
 ## Wikipedia → Markdown
 
-`pagers wiki convert` turns any `*.wikipedia.org/wiki/…` article into clean
+`markers wiki convert` turns any `*.wikipedia.org/wiki/…` article into clean
 Markdown through the MediaWiki REST API — metadata, references, MathML, internal
-links rewritten to local `.md` filenames. `pagers wiki info` returns title,
+links rewritten to local `.md` filenames. `markers wiki info` returns title,
 description, revision id and timestamp as JSON. `scripts/examples.sh` crawls a
 whole link graph from a seed article. See [Wikipedia](../content/wiki.md) and
 [Scripts](../project/scripts.md).
 
 ## MCP server
 
-`pagers-mcp` speaks the Model Context Protocol over stdio, exposing
-`pagers_build`, `pagers_list_pages`, `pagers_render_markdown`,
-`pagers_site_graph` and `pagers_site_config` — so AI agents can build and
+`markers-mcp` speaks the Model Context Protocol over stdio, exposing
+`markers_build`, `markers_list_pages`, `markers_render_markdown`,
+`markers_site_graph` and `markers_site_config` — so AI agents can build and
 inspect sites directly. See [MCP server](../project/mcp.md).
 
 ## One binary, no runtime

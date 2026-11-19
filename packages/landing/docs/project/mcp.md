@@ -5,9 +5,9 @@ order: 8
 
 # MCP server
 
-`pagers-mcp` is a stdio
+`markers-mcp` is a stdio
 [Model Context Protocol](https://modelcontextprotocol.io) server that exposes
-pagers' operations as tools — build sites, list pages, render Markdown, inspect
+markers' operations as tools — build sites, list pages, render Markdown, inspect
 the link graph — so MCP-capable agents (and other clients) can drive the
 generator directly.
 
@@ -18,27 +18,27 @@ Point your MCP client at the binary:
 ```json
 {
   "mcpServers": {
-    "pagers": {
-      "command": "pagers-mcp"
+    "markers": {
+      "command": "markers-mcp"
     }
   }
 }
 ```
 
-Install it with the same scripts as `pagers` (`install-local.sh`, `install.sh`,
-or `cargo install --path crates/pagers-mcp`).
+Install it with the same scripts as `markers` (`install-local.sh`, `install.sh`,
+or `cargo install --path crates/markers-mcp`).
 
 ## Tools
 
 All tools return pretty-printed JSON; failures surface as MCP errors.
 
-| Tool                     | Parameters                    | Returns                                                 |
-| ------------------------ | ----------------------------- | ------------------------------------------------------- |
-| `pagers_build`           | `content_dir?`, `output_dir?` | Build summary (pages, assets, graph)                    |
-| `pagers_list_pages`      | `content_dir?`                | Discovered pages: title, url, source, draft/order/label |
-| `pagers_render_markdown` | `markdown`, `source_path?`    | Rendered HTML, outline, title, link edges               |
-| `pagers_site_graph`      | `content_dir?`                | Nodes/edges/stats without building                      |
-| `pagers_site_config`     | `content_dir?`                | Resolved config (title, basePath, theme, footer)        |
+| Tool                      | Parameters                    | Returns                                                 |
+| ------------------------- | ----------------------------- | ------------------------------------------------------- |
+| `markers_build`           | `content_dir?`, `output_dir?` | Build summary (pages, assets, graph)                    |
+| `markers_list_pages`      | `content_dir?`                | Discovered pages: title, url, source, draft/order/label |
+| `markers_render_markdown` | `markdown`, `source_path?`    | Rendered HTML, outline, title, link edges               |
+| `markers_site_graph`      | `content_dir?`                | Nodes/edges/stats without building                      |
+| `markers_site_config`     | `content_dir?`                | Resolved config (title, basePath, theme, footer)        |
 
 `content_dir`/`output_dir` default to `docs`/`dist`, matching the CLI.
 

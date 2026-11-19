@@ -3,23 +3,23 @@ title: Documentation
 order: 0
 ---
 
-# pagers documentation
+# markers documentation
 
-`pagers` turns a folder of Markdown files into a complete static website — clean
-URLs, generated navigation, light/dark themes, and an interactive graph of how
-pages link together. No build pipeline, no runtime, no configuration file
+`markers` turns a folder of Markdown files into a complete static website —
+clean URLs, generated navigation, light/dark themes, and an interactive graph of
+how pages link together. No build pipeline, no runtime, no configuration file
 required: **one Rust binary**.
 
 ```bash
-pagers build ./docs
+markers build ./docs
 ```
 
 ## Quick start
 
 ```bash
-pagers init my-site          # scaffold docs/index.md + an example page
-pagers serve my-site/docs    # build + serve on http://localhost:8080
-pagers build my-site/docs --output my-site/dist
+markers init my-site          # scaffold docs/index.md + an example page
+markers serve my-site/docs    # build + serve on http://localhost:8080
+markers build my-site/docs --output my-site/dist
 ```
 
 See [Getting started](guide/getting-started.md) for installation and your first
@@ -41,22 +41,24 @@ site.
   page-to-page links on every build.
 - **[Wikipedia import](guide/features.md#wikipedia-markdown)** — article URL →
   clean Markdown, with a BFS crawler for whole sections.
-- **[MCP server](guide/features.md#mcp-server)** — `pagers-mcp` exposes build
+- **[MCP server](guide/features.md#mcp-server)** — `markers-mcp` exposes build
   and inspection tools to AI agents over stdio.
 
 ## Guides
 
 - **[Getting started](guide/getting-started.md)** — install, scaffold, build.
 - **[Commands](guide/commands.md)** — every CLI command and flag.
-- **[Configuration](guide/configuration.md)** — frontmatter, `pagers.yaml`,
+- **[Configuration](guide/configuration.md)** — frontmatter, `markers.yaml`,
   `basePath`, URL rules.
 - **[Markdown](content/markdown.md)** — GFM syntax, heading ids, alerts, link
   rewriting.
 - **[Theming](content/theming.md)** — palettes, tokens, the dark-mode toggle.
-- **[Graph](content/graph.md)** — the page-link graph and `pagers graph`
+- **[Graph](content/graph.md)** — the page-link graph and `markers graph`
   outputs.
-- **[Wikipedia](content/wiki.md)** — `pagers wiki convert` / `pagers wiki info`.
-- **[MCP server](project/mcp.md)** — client setup and the five `pagers_*` tools.
+- **[Wikipedia](content/wiki.md)** — `markers wiki convert` /
+  `markers wiki info`.
+- **[MCP server](project/mcp.md)** — client setup and the five `markers_*`
+  tools.
 - **[Scripts](project/scripts.md)** — installers and the `examples.sh` crawler.
 - **[Deploy](project/deploy.md)** — GitHub Pages workflow and other static
   hosts.
@@ -64,4 +66,4 @@ site.
 ## Internals
 
 - **[Architecture](project/architecture.md)** — the Cargo workspace, the build
-  pipeline, and how to develop `pagers` itself.
+  pipeline, and how to develop `markers` itself.

@@ -2,12 +2,12 @@
 
 ## Location
 
-This module was migrated into the `pagers` repository (`packages/md.scss`). It
+This module was migrated into the `markers` repository (`packages/md.scss`). It
 remains a **standalone pnpm project** — the Cargo workspace does not build
-it. `pagers` ships a compiled copy embedded at
-`crates/pagers-theme/assets/md.css`; after stylesheet changes, run
+it. `markers` ships a compiled copy embedded at
+`crates/markers-theme/assets/md.css`; after stylesheet changes, run
 `pnpm run build` here and copy `dist/md.css` to that path, then rebuild
-`pagers`.
+`markers`.
 
 ## Commands
 

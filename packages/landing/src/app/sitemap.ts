@@ -3,7 +3,7 @@ import { getDocPages } from '@/lib/docs';
 
 export const dynamic = 'force-static';
 
-const SITE_URL = 'https://hieudoanm.github.io/pagers/';
+const SITE_URL = 'https://hieudoanm.github.io/markers/';
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const docs = getDocPages().map((p) => ({
