@@ -1,0 +1,84 @@
+//! Configuration.
+
+use std::path::PathBuf;
+
+/// TEI XML namespace.
+pub const NS: &str = "http://www.tei-c.org/ns/1.0";
+
+/// Metadata fields emitted in YAML frontmatter.
+pub const META_FIELDS: &[&str] = &[
+    "title", "authors", "year", "journal", "volume", "issue", "pages", "doi", "doi_link", "type",
+    "cited_by",
+];
+
+/// GROBID service name.
+pub const GROBID_SERVICE: &str = "processFulltextDocument";
+
+/// Whether to consolidate the header when calling GROBID.
+pub const GROBID_CONSOLIDATE_HEADER: bool = true;
+
+/// GROBID server port.
+pub fn grobid_port() -> u16 {
+    std::env::var("GROBID_PORT")
+        .ok()
+        .and_then(|v| v.parse::<u16>().ok())
+        .unwrap_or(8070)
+}
+
+/// GROBID base URL. `GROBID_URL` wins; otherwise built from `GROBID_PORT`.
+pub fn grobid_url() -> String {
+    if let Ok(url) = std::env::var("GROBID_URL") {
+        return url.trim_end_matches('/').to_string();
+    }
+    format!("http://localhost:{}", grobid_port())
+}
+
+/// GROBID health check URL.
+pub fn health_url() -> String {
+    format!("{}/api/isalive", grobid_url())
+}
+
+/// Docker image used for GROBID.
+pub fn grobid_image() -> String {
+    std::env::var("GROBID_IMAGE").unwrap_or_else(|_| "grobid/grobid:0.9.1-crf".to_string())
+}
+
+/// Docker container name.
+pub fn grobid_container() -> String {
+    std::env::var("GROBID_CONTAINER").unwrap_or_else(|_| "grobid-cli".to_string())
+}
+
+/// Path to a locally installed GROBID service launcher
+/// (`grobid-service/bin/grobid-service` from the standalone Gradle
+/// distribution). `GROBID_LOCAL_BIN` overrides; otherwise the default
+/// install location is probed. When set/found, the CLI spawns this JVM
+/// process instead of managing a Docker container.
+pub fn grobid_local_bin() -> Option<PathBuf> {
+    if let Ok(path) = std::env::var("GROBID_LOCAL_BIN") {
+        let p = PathBuf::from(path);
+        return p.is_file().then_some(p);
+    }
+    let home = std::env::var_os("HOME").map(PathBuf::from)?;
+    // Prefer the markers install location; fall back to the legacy
+    // grobid.rs path so existing installs keep working.
+    for base in [
+        ".local/share/markers/grobid",
+        ".local/share/grobid.rs/grobid",
+    ] {
+        let candidate = home.join(base).join("grobid-service/bin/grobid-service");
+        if candidate.is_file() {
+            return Some(candidate);
+        }
+    }
+    None
+}
+
+/// Resolve the data directory from environment variables.
+pub fn get_data_dir() -> PathBuf {
+    if let Ok(dir) =
+        std::env::var("GROBID_DATA_DIR").or_else(|_| std::env::var("ARTICLES_DATA_DIR"))
+    {
+        return PathBuf::from(dir);
+    }
+    std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."))
+}

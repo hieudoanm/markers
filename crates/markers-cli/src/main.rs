@@ -8,6 +8,7 @@
 //! ```
 
 use markers_build as build;
+mod grobid;
 mod init;
 mod landing;
 mod serve;
@@ -71,6 +72,11 @@ enum Command {
         #[command(subcommand)]
         command: wiki::WikiCommand,
     },
+    /// Convert PDFs to Markdown via GROBID; search/stats/graph/MCP over the corpus.
+    Grobid {
+        #[command(flatten)]
+        args: grobid::GrobidArgs,
+    },
     /// Build, then serve the site locally.
     Serve {
         /// Content directory (default: ./docs).
@@ -114,6 +120,7 @@ fn main() -> ExitCode {
         }
         Command::Landing { command } => return landing::run(command),
         Command::Wiki { command } => return wiki::run(command),
+        Command::Grobid { args } => return grobid::run(args),
         Command::Serve {
             content,
             output,

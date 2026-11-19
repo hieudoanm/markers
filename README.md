@@ -64,6 +64,10 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
   project sites) with one frontmatter field.
 - **Wikipedia import** — `markers wiki convert`/`info` turn articles into
   Markdown; `scripts/examples.sh` crawls whole link graphs.
+- **PDF → Markdown** — `markers grobid` converts PDF articles via GROBID into
+  Markdown with citation metadata, indexes them into a searchable corpus, and
+  serves the corpus to AI agents over MCP. A Tauri desktop app
+  (`packages/desktop`) wraps the same pipeline in a native PDF dropzone.
 - **MCP server** — `markers-mcp` exposes build/inspect tools to AI agents.
 
 See the full list in [features](packages/landing/docs/guide/features.md).
@@ -105,6 +109,7 @@ cargo build --release && cp target/release/markers ~/.local/bin/
 | `markers wiki convert <url>` | Convert a Wikipedia article to Markdown                       |
 | `markers wiki info <url>`    | Show article metadata                                         |
 | `markers landing …`          | Build a single-file landing page from `landing.yaml`          |
+| `markers grobid …`           | PDF → Markdown via GROBID + corpus search/stats/graph/MCP     |
 
 ```bash
 markers init my-site
@@ -118,6 +123,12 @@ markers wiki convert "https://fr.wikipedia.org/wiki/Caf%C3%A9" -o cafe.md
 markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --format json
 markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --include-references
 markers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+
+# PDFs → Markdown (needs a GROBID backend: Docker or grobid-service)
+markers grobid                      # convert ./pdf → ./tei + ./md + corpus
+markers grobid search "stroke"      # search the corpus index
+markers grobid stats                # corpus statistics
+markers grobid graph                # citation-graph dashboard (.grobid/index.html)
 ```
 
 ## Zero configuration
