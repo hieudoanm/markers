@@ -26,8 +26,8 @@ cargo clippy --workspace --all-targets -- -D warnings
 echo "==> cargo test --workspace"
 cargo test --workspace
 
-echo "==> cargo build --release -p pagers-cli"
-cargo build --release -p pagers-cli
+echo "==> cargo build --release -p markers-cli"
+cargo build --release -p markers-cli
 
 if [[ "$DEPLOY" -eq 1 ]]; then
   echo "==> build landing site (packages/landing → out/)"

@@ -6,7 +6,7 @@ order: 3
 # Configuration
 
 There is no config file format to learn — the directory layout is the
-configuration, and a small amount of frontmatter or a flat `pagers.yaml` covers
+configuration, and a small amount of frontmatter or a flat `markers.yaml` covers
 the rest.
 
 ## Frontmatter
@@ -58,11 +58,11 @@ pgp: 'ABCD 1234 EF56 7890'
 - `url` — absolute site root (e.g. `https://example.com/docs`), including the
   `basePath`. Used for sitemap and robots.txt URLs.
 - `basePath` — prefix prepended to every generated URL, for hosting under a
-  sub-path (e.g. GitHub Pages project sites → `/pagers`).
+  sub-path (e.g. GitHub Pages project sites → `/markers`).
 - `theme` — initial theme, `light` (default) or `dark`.
 - `footer` — text rendered in the page footer.
 
-## `pagers.yaml`
+## `markers.yaml`
 
 The same flat `key: value` shape works as a standalone file in the content root
 — used when the index page has no frontmatter (or no site fields):
@@ -76,7 +76,7 @@ url: https://example.com/docs
 contact: mailto:hi@example.com
 ```
 
-Index-page frontmatter wins over `pagers.yaml`, which wins over defaults (title
+Index-page frontmatter wins over `markers.yaml`, which wins over defaults (title
 derived from the directory name).
 
 ## URL rules

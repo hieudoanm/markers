@@ -8,13 +8,13 @@ order: 1
 ## Install
 
 Pick whichever fits your machine — all of them produce the same two binaries,
-`pagers` and `pagers-mcp`.
+`markers` and `markers-mcp`.
 
 ### From a clone
 
 ```bash
-git clone https://github.com/hieudoanm/pagers
-cd pagers
+git clone https://github.com/hieudoanm/markers
+cd markers
 ./scripts/install-local.sh
 ```
 
@@ -24,24 +24,24 @@ Builds the release binaries and installs them into `~/.local/bin` (override with
 ### From anywhere, via curl
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/hieudoanm/pagers/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/hieudoanm/markers/main/scripts/install.sh | sh
 ```
 
 Downloads the source, builds it, and installs the binaries — same result as the
-local script. See [Scripts](../project/scripts.md) for `PAGERS_REF`,
-`PAGERS_REPO` and `PREFIX` options.
+local script. See [Scripts](../project/scripts.md) for `MARKERS_REF`,
+`MARKERS_REPO` and `PREFIX` options.
 
 ### With Cargo
 
 ```bash
-cargo install --path crates/pagers-cli   # pagers
-cargo install --path crates/pagers-mcp   # pagers-mcp
+cargo install --path crates/markers-cli   # markers
+cargo install --path crates/markers-mcp   # markers-mcp
 ```
 
 ## Scaffold a site
 
 ```bash
-pagers init my-site
+markers init my-site
 ```
 
 Creates `my-site/docs/` with an index page and an example article.
@@ -49,9 +49,9 @@ Creates `my-site/docs/` with an index page and an example article.
 ## Build it
 
 ```bash
-pagers build my-site/docs
+markers build my-site/docs
 # or explicitly:
-pagers build my-site/docs --output my-site/dist
+markers build my-site/docs --output my-site/dist
 ```
 
 The directory layout _is_ the configuration:
@@ -65,8 +65,8 @@ my-site/docs/
 └── assets/logo.png    → copied through as an asset
 ```
 
-Open `dist/index.html` in a browser, or run `pagers serve my-site/docs` to build
-and serve it on `localhost:8080`.
+Open `dist/index.html` in a browser, or run `markers serve my-site/docs` to
+build and serve it on `localhost:8080`.
 
 ## What's next
 

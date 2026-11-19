@@ -1,8 +1,8 @@
 {
-  "name": "@pagers/workspace",
+  "name": "@markers/workspace",
   "version": "0.0.1",
   "private": true,
-  "description": "Pagers",
+  "description": "Markers",
   "license": "MIT",
   "author": {
     "name": "Hieu Doan",

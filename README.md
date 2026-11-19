@@ -1,36 +1,35 @@
-# pagers
+# markers
 
-[![CI](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml?branch=master)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/hieudoanm/markers/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/hieudoanm/markers/actions/workflows/ci.yaml?branch=master) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Topics: `static-site-generator`, `markdown`, `rust`, `documentation`, `cli`
 
-
 > Write Markdown. Run one command. Get a website — and a map of how it links together.
 
-`pagers` is a static site generator for documentation, inspired by
+`markers` is a static site generator for documentation, inspired by
 [docsify](https://docsify.js.org) and the Go `pagify` tool it replaces. Point
 it at a folder of Markdown and it produces a complete static site: clean URLs,
 file-tree navigation, search-free reading, light/dark themes, and a generated
 **graph page** showing how every page links to every other.
 
 ```bash
-pagers build ./docs
+markers build ./docs
 ```
 
 No configuration, no Node.js, no runtime dependencies — one Rust binary.
 
-![pagers — write Markdown, get a website](assets/branding/png/og.png)
+![markers — write Markdown, get a website](assets/branding/png/og.png)
 
-**Live demo:** <https://hieudoanm.github.io/pagers/>
+**Live demo:** <https://hieudoanm.github.io/markers/>
 
-![pagers demo](assets/demo/gif/demo.gif)
+![markers demo](assets/demo/gif/demo.gif)
 
 ## Table of Contents
 
-- [pagers](#pagers)
+- [markers](#markers)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
-  - [pagers vs docsify](#pagers-vs-docsify)
+  - [markers vs docsify](#markers-vs-docsify)
   - [Get Started](#get-started)
   - [Commands](#commands)
   - [Zero configuration](#zero-configuration)
@@ -60,28 +59,28 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
   the binary; a toggle persists in `localStorage` and respects
   `prefers-color-scheme`.
 - **Graph page** — every build writes an interactive `graph.html` mapping
-  how pages link to each other; `pagers graph` exports HTML/JSON/DOT.
+  how pages link to each other; `markers graph` exports HTML/JSON/DOT.
 - **`basePath` support** — deploy under any sub-path (e.g. GitHub Pages
   project sites) with one frontmatter field.
-- **Wikipedia import** — `pagers wiki convert`/`info` turn articles into
+- **Wikipedia import** — `markers wiki convert`/`info` turn articles into
   Markdown; `scripts/examples.sh` crawls whole link graphs.
-- **MCP server** — `pagers-mcp` exposes build/inspect tools to AI agents.
+- **MCP server** — `markers-mcp` exposes build/inspect tools to AI agents.
 
 See the full list in [features](packages/landing/docs/guide/features.md).
 
-## pagers vs docsify
+## markers vs docsify
 
-`pagers` is inspired by [docsify](https://docsify.js.org) but takes the
+`markers` is inspired by [docsify](https://docsify.js.org) but takes the
 opposite approach: docsify renders Markdown **in the browser at runtime**
-(one `index.html` + JS), while `pagers` compiles to **static HTML ahead of
+(one `index.html` + JS), while `markers` compiles to **static HTML ahead of
 time** — faster pages, works without JavaScript, cacheable, and deployable
 to literally any static host.
 
-|                 | docsify           | pagers                  |
+|                 | docsify           | markers                 |
 | --------------- | ----------------- | ----------------------- |
 | Output          | runtime JS render | static HTML files       |
 | Requires JS     | yes               | no (progressive)        |
-| Build step      | none              | `pagers build`          |
+| Build step      | none              | `markers build`         |
 | Config          | `window.$docsify` | directory + frontmatter |
 | Search          | plugin            | —                       |
 | Page-link graph | —                 | built-in `graph.html`   |
@@ -92,33 +91,33 @@ to literally any static host.
 ```bash
 cargo install --path .
 # or
-cargo build --release && cp target/release/pagers ~/.local/bin/
+cargo build --release && cp target/release/markers ~/.local/bin/
 ```
 
 ## Commands
 
-| Command                     | What it does                                                  |
-| --------------------------- | ------------------------------------------------------------- |
-| `pagers init [dir]`         | Scaffold `dir/docs` with example pages                        |
-| `pagers build [content]`    | Build the site into `./dist`                                  |
-| `pagers serve [content]`    | Build, then serve on localhost                                |
-| `pagers graph [content]`    | Write the link graph standalone (`graph.html`/`.json`/`.dot`) |
-| `pagers wiki convert <url>` | Convert a Wikipedia article to Markdown                       |
-| `pagers wiki info <url>`    | Show article metadata                                         |
-| `pagers landing …`          | Build a single-file landing page from `landify.yaml`          |
+| Command                      | What it does                                                  |
+| ---------------------------- | ------------------------------------------------------------- |
+| `markers init [dir]`         | Scaffold `dir/docs` with example pages                        |
+| `markers build [content]`    | Build the site into `./dist`                                  |
+| `markers serve [content]`    | Build, then serve on localhost                                |
+| `markers graph [content]`    | Write the link graph standalone (`graph.html`/`.json`/`.dot`) |
+| `markers wiki convert <url>` | Convert a Wikipedia article to Markdown                       |
+| `markers wiki info <url>`    | Show article metadata                                         |
+| `markers landing …`          | Build a single-file landing page from `landing.yaml`          |
 
 ```bash
-pagers init my-site
-pagers build my-site/docs --output my-site/dist
-pagers serve my-site/docs --port 8080
-pagers graph my-site/docs            # graph.html + graph.json + graph.dot
+markers init my-site
+markers build my-site/docs --output my-site/dist
+markers serve my-site/docs --port 8080
+markers graph my-site/docs            # graph.html + graph.json + graph.dot
 
 # Wikipedia → Markdown
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"
-pagers wiki convert "https://fr.wikipedia.org/wiki/Caf%C3%A9" -o cafe.md
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --format json
-pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --include-references
-pagers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+markers wiki convert "https://fr.wikipedia.org/wiki/Caf%C3%A9" -o cafe.md
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --format json
+markers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)" --include-references
+markers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
 ```
 
 ## Zero configuration
@@ -156,7 +155,7 @@ draft: false
 
 The index page additionally accepts site-wide fields: `language`,
 `basePath`, `theme` (`light` or `dark`), `footer`. The same fields can live in
-`pagers.yaml` instead.
+`markers.yaml` instead.
 
 ## Markdown features
 
@@ -177,7 +176,7 @@ publishes at. Broken links are left untouched so they stay visible.
 
 Every build writes `graph.html` at the site root (linked from the header): an
 interactive force-directed map of page-to-page links, with node details and
-dark/light theming. `pagers graph` writes the same data standalone in HTML,
+dark/light theming. `markers graph` writes the same data standalone in HTML,
 JSON or Graphviz DOT.
 
 ## Documentation
@@ -194,7 +193,7 @@ The full docs live in [`packages/landing/docs/`](packages/landing/docs/) and are
 ## Theming
 
 Markdown typography and its palettes come from
-[`md.css`](https://github.com/hieudoanm/pagers/tree/main/packages/md.scss) —
+[`md.css`](https://github.com/hieudoanm/markers/tree/main/packages/md.scss) —
 the Sass module migrated into this repo at `packages/md.scss` (light default,
 `md-dark`, plus six colour themes), with the compiled stylesheet embedded in
 the binary.
@@ -236,51 +235,50 @@ A Cargo workspace: two binaries plus six library crates.
 
 ```text
 crates/
-├── pagers-cli/        # pagers binary: CLI, build, serve, init, wiki
-├── pagers-mcp/        # pagers-mcp binary: MCP server over stdio
-├── pagers-build/      # build pipeline: discover → render → write → graph
-├── pagers-site/       # discovery, page model, URLs, nav, link resolution,
-│                      #   frontmatter, pagers.yaml config (no deps)
-├── pagers-markdown/   # Markdown → HTML: outlines, alerts, link rewriting
-├── pagers-theme/      # embedded md.css + site chrome + page template
-├── pagers-graph/      # page-link graph extraction and rendering
-└── pagers-wiki/       # Wikipedia → Markdown: REST client, extractor,
+├── markers-cli/        # markers binary: CLI, build, serve, init, wiki
+├── markers-mcp/        # markers-mcp binary: MCP server over stdio
+├── markers-build/      # build pipeline: discover → render → write → graph
+├── markers-site/       # discovery, page model, URLs, nav, link resolution,
+│                      #   frontmatter, markers.yaml config (no deps)
+├── markers-markdown/   # Markdown → HTML: outlines, alerts, link rewriting
+├── markers-theme/      # embedded md.css + site chrome + page template
+├── markers-graph/      # page-link graph extraction and rendering
+└── markers-wiki/       # Wikipedia → Markdown: REST client, extractor,
                        #   converter, normalizer
 ```
 
-The root `Cargo.toml` is a virtual workspace; `pagers-cli` ships the
-`pagers` binary and `pagers-mcp` the `pagers-mcp` binary, both via
+The root `Cargo.toml` is a virtual workspace; `markers-cli` ships the
+`markers` binary and `markers-mcp` the `markers-mcp` binary, both via
 `[[bin]]`.
 
-Dependency direction: `pagers-cli`/`pagers-mcp` → `pagers-build`/
-`pagers-theme`/`pagers-graph` → `pagers-markdown` → `pagers-site`.
+Dependency direction: `markers-cli`/`markers-mcp` → `markers-build`/
+`markers-theme`/`markers-graph` → `markers-markdown` → `markers-site`.
 
 ### MCP server
 
-`pagers-mcp` speaks the Model Context Protocol on stdio. Point an MCP
+`markers-mcp` speaks the Model Context Protocol on stdio. Point an MCP
 client at the binary to let it build sites and inspect content:
 
 ```json
 {
   "mcpServers": {
-    "pagers": {
-      "command": "pagers-mcp"
+    "markers": {
+      "command": "markers-mcp"
     }
   }
 }
 ```
 
-Tools: `pagers_build` (build a site), `pagers_list_pages`,
-`pagers_render_markdown`, `pagers_site_graph`, `pagers_site_config`.
+Tools: `markers_build` (build a site), `markers_list_pages`,
+`markers_render_markdown`, `markers_site_graph`, `markers_site_config`.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
-
 ### Streamable HTTP
 
-`pagers-mcp --http 127.0.0.1:8080` also accepts `--http <addr>` (and `--token <token>`, or the
+`markers-mcp --http 127.0.0.1:8080` also accepts `--http <addr>` (and `--token <token>`, or the
 `MCP_AUTH_TOKEN` environment variable) to serve the same MCP surface over
 streamable HTTP at `http://<addr>/mcp` — the transport used by ChatGPT
 connectors and remote Claude clients. When a token is configured, every

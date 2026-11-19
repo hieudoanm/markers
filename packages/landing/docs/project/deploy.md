@@ -5,13 +5,13 @@ order: 10
 
 # Deploy
 
-`pagers build` emits a plain directory of HTML, CSS, JS and assets — there is
+`markers build` emits a plain directory of HTML, CSS, JS and assets — there is
 nothing to run at request time. Deploy `dist/` anywhere static files are served.
 
 ## GitHub Pages (recommended)
 
-A `pagers`-built site deploys to GitHub Pages with a small workflow: check out,
-build the release binary, run `pagers build`, and hand the output directory to
+A `markers`-built site deploys to GitHub Pages with a small workflow: check out,
+build the release binary, run `markers build`, and hand the output directory to
 `upload-pages-artifact` + `deploy-pages`:
 
 ```yaml
@@ -32,8 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release -p pagers-cli
-      - run: ./target/release/pagers build docs --output dist
+      - run: cargo build --release -p markers-cli
+      - run: ./target/release/markers build docs --output dist
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -43,10 +43,10 @@ jobs:
 
 Then enable **Settings → Pages → Source: GitHub Actions** and push.
 
-> This repository's own site (`pagers` + these docs) is deployed from
-> [`packages/landing`](https://github.com/hieudoanm/pagers/tree/master/packages/landing)
+> This repository's own site (`markers` + these docs) is deployed from
+> [`packages/landing`](https://github.com/hieudoanm/markers/tree/master/packages/landing)
 > — a Next.js static export that renders the Markdown docs at `/docs` — but the
-> workflow above is the generic flow for any `pagers` site.
+> workflow above is the generic flow for any `markers` site.
 
 For a project site (`https://<user>.github.io/<repo>/`), set `basePath` to the
 repo name so every URL is prefixed correctly:
@@ -63,13 +63,13 @@ to `/` — no configuration needed.
 
 ## Other static hosts
 
-| Host             | Notes                                                              |
-| ---------------- | ------------------------------------------------------------------ |
-| Cloudflare Pages | Connect the repo; build command `pagers build docs`, output `dist` |
-| Netlify          | Same: build `pagers build docs`, publish `dist`                    |
-| Vercel           | Framework preset "Other"; output directory `dist`                  |
-| S3 / CDN         | `aws s3 sync dist/ s3://bucket --delete`                           |
-| Any web server   | `pagers build docs && cp -r dist/* /var/www/`                      |
+| Host             | Notes                                                               |
+| ---------------- | ------------------------------------------------------------------- |
+| Cloudflare Pages | Connect the repo; build command `markers build docs`, output `dist` |
+| Netlify          | Same: build `markers build docs`, publish `dist`                    |
+| Vercel           | Framework preset "Other"; output directory `dist`                   |
+| S3 / CDN         | `aws s3 sync dist/ s3://bucket --delete`                            |
+| Any web server   | `markers build docs && cp -r dist/* /var/www/`                      |
 
 ## Generated metadata files
 
@@ -110,7 +110,7 @@ versions.
   icons. Harmless on modern browsers; kept for completeness.
 - **`opensearch.xml`** — OpenSearch descriptor so browsers can offer "search
   this site". The `{searchTerms}` template currently points at the site root —
-  `pagers` has no built-in search yet, so this is a stub until one exists.
+  `markers` has no built-in search yet, so this is a stub until one exists.
 
 ### Identity & verification
 
@@ -156,12 +156,12 @@ Because pages publish at trailing-slash URLs (`/guide/` → `guide/index.html`),
 | `https://example.com/manual/`    | `/manual`     |
 
 `basePath` is applied to every generated URL — internal links, asset URLs, the
-graph page — both in the HTML and by the `pagers serve` preview server.
+graph page — both in the HTML and by the `markers serve` preview server.
 
 ## Checking before you deploy
 
 ```bash
-pagers serve ./docs --port 8080   # build + local server, basePath-aware
+markers serve ./docs --port 8080   # build + local server, basePath-aware
 ```
 
 The server strips `basePath` before resolving files and redirects `/guide` →

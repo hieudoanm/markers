@@ -1,8 +1,8 @@
-# pagers — Rust static site generator
+# markers — Rust static site generator
 # Common tasks: make help
 
 CARGO ?= cargo
-PAGERS ?= $(CARGO) run --release -p pagers-cli --
+MARKERS ?= $(CARGO) run --release -p markers-cli --
 PORT ?= 8080
 
 .PHONY: help build release run serve docs test lint fmt fmt-check clippy \
@@ -15,14 +15,14 @@ help: ## Show this help
 build: ## Debug build (workspace)
 	$(CARGO) build
 
-release: ## Release build of the pagers CLI
-	$(CARGO) build --release -p pagers-cli
+release: ## Release build of the markers CLI
+	$(CARGO) build --release -p markers-cli
 
-run: release ## Run pagers CLI: make run -- build docs --output dist
-	./target/release/pagers $(ARGS)
+run: release ## Run markers CLI: make run -- build docs --output dist
+	./target/release/markers $(ARGS)
 
-serve: release ## Serve the docs content with pagers on :$(PORT)
-	./target/release/pagers serve packages/landing/docs --port $(PORT)
+serve: release ## Serve the docs content with markers on :$(PORT)
+	./target/release/markers serve packages/landing/docs --port $(PORT)
 
 landing: ## Build the landing site (Next.js static export) → packages/landing/out
 	pnpm -C packages/landing install --frozen-lockfile
@@ -53,8 +53,8 @@ ci-deploy: ## CI flow + stage .page and build _site (like a master push)
 examples: ## Wikipedia crawl + demo site (see scripts/examples.sh --help)
 	./scripts/examples.sh $(ARGS)
 
-install: release ## Install pagers to ~/.local/bin
-	cp target/release/pagers $${HOME}/.local/bin/pagers
+install: release ## Install markers to ~/.local/bin
+	cp target/release/markers $${HOME}/.local/bin/markers
 
 clean: ## Remove build outputs and generated sites
 	$(CARGO) clean

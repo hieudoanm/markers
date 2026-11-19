@@ -60,23 +60,23 @@ jobs:
       - name: Cache cargo artifacts
         uses: Swatinem/rust-cache@v2.9.3
 
-      - name: Build pagers binary (release)
-        run: cargo build --release -p pagers-cli
+      - name: Build markers binary (release)
+        run: cargo build --release -p markers-cli
 
       - name: Rename binary for release
         shell: bash
         run: |
           case "${{ matrix.os }}" in
-            ubuntu-latest) mv target/release/pagers pagers-x86_64-unknown-linux-gnu ;;
-            macos-latest) mv target/release/pagers pagers-aarch64-apple-darwin ;;
-            windows-latest) mv target/release/pagers.exe pagers-x86_64-pc-windows-msvc.exe ;;
+            ubuntu-latest) mv target/release/markers markers-x86_64-unknown-linux-gnu ;;
+            macos-latest) mv target/release/markers markers-aarch64-apple-darwin ;;
+            windows-latest) mv target/release/markers.exe markers-x86_64-pc-windows-msvc.exe ;;
           esac
 
       - name: Upload CLI binary
         uses: actions/upload-artifact@v7.0.2
         with:
-          name: pagers-cli-${{ matrix.os }}
-          path: pagers-*
+          name: markers-cli-${{ matrix.os }}
+          path: markers-*
           if-no-files-found: error
           retention-days: 7
 
@@ -95,7 +95,7 @@ jobs:
         uses: actions/download-artifact@v8.0.2
         with:
           path: dist
-          pattern: pagers-cli-*
+          pattern: markers-cli-*
           merge-multiple: true
 
       - name: Delete existing latest release
@@ -110,7 +110,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create latest \
-            --title "pagers (latest)" \
+            --title "markers (latest)" \
             --notes-file RELEASE.md \
             --target "$GITHUB_SHA" \
             dist/*

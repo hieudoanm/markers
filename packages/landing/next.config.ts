@@ -13,9 +13,9 @@ const nextConfig: NextConfig = {
 
   output: 'export',
   trailingSlash: true,
-  // GitHub Pages project site lives under /pagers/
-  basePath: NODE_ENV === 'production' ? '/pagers' : '',
-  assetPrefix: NODE_ENV === 'production' ? '/pagers' : '',
+  // GitHub Pages project site lives under /markers/
+  basePath: NODE_ENV === 'production' ? '/markers' : '',
+  assetPrefix: NODE_ENV === 'production' ? '/markers' : '',
   images: { unoptimized: true },
 };
 

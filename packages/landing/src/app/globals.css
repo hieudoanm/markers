@@ -2,11 +2,11 @@
 @plugin '@tailwindcss/typography';
 
 @plugin 'daisyui' {
-  themes: pagers --default;
+  themes: markers --default;
 }
 
 @plugin 'daisyui/theme' {
-  name: 'pagers';
+  name: 'markers';
   default: true;
   color-scheme: 'light';
   --color-base-100: #ffffff;

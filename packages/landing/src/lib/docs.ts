@@ -3,10 +3,10 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 const DOCS_DIR = path.join(process.cwd(), 'docs');
-const REPO_BLOB = 'https://github.com/hieudoanm/pagers/blob/master';
+const REPO_BLOB = 'https://github.com/hieudoanm/markers/blob/master';
 // Must match basePath in next.config.ts (GitHub Pages project site).
 // Used in raw HTML hrefs, so basePath is not applied automatically.
-const BASE_PATH = process.env.NODE_ENV === 'production' ? '/pagers' : '';
+const BASE_PATH = process.env.NODE_ENV === 'production' ? '/markers' : '';
 
 export interface DocHeading {
   /** Anchor id added by addHeadingIds */
@@ -118,7 +118,7 @@ const slugify = (text: string): string => {
     .replace(/[\s_]+/g, '-');
 };
 
-/** Add id attributes to h1–h6; strip pagers' `{#custom-id}` syntax. */
+/** Add id attributes to h1–h6; strip markers' `{#custom-id}` syntax. */
 const addHeadingIds = (html: string): string => {
   const used = new Map<string, number>();
   return html.replace(

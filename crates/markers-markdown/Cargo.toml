@@ -1,0 +1,10 @@
+[package]
+name = "markers-markdown"
+version = "0.0.1"
+edition = "2021"
+description = "Markdown rendering for markers: HTML, outlines, alerts, link rewriting"
+license = "GPL-3.0"
+
+[dependencies]
+markers-site = { path = "../markers-site" }
+pulldown-cmark = { version = "=0.13.6", default-features = false, features = ["html"] }

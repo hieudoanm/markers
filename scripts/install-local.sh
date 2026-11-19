@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Install pagers from a local clone: builds the release binaries and
+# Install markers from a local clone: builds the release binaries and
 # installs them into ~/.local/bin.
 #
-#   git clone https://github.com/hieudoanm/pagers
-#   cd pagers && ./scripts/install-local.sh
+#   git clone https://github.com/hieudoanm/markers
+#   cd markers && ./scripts/install-local.sh
 #
 # Requires a Rust toolchain (https://rustup.rs). Override the install
 # prefix with PREFIX=/usr/local ./scripts/install-local.sh
@@ -21,10 +21,10 @@ command -v cargo >/dev/null 2>&1 ||
 
 mkdir -p "$BIN_DIR"
 
-log "Building pagers (release)"
-cargo build --release --manifest-path "$ROOT/Cargo.toml" -p pagers-cli -p pagers-mcp
+log "Building markers (release)"
+cargo build --release --manifest-path "$ROOT/Cargo.toml" -p markers-cli -p markers-mcp
 
-for bin in pagers pagers-mcp; do
+for bin in markers markers-mcp; do
   src="$ROOT/target/release/$bin"
   [ -x "$src" ] || die "expected binary $src not found"
   install -m 0755 "$src" "$BIN_DIR/$bin"
@@ -36,4 +36,4 @@ case ":$PATH:" in
   *) log "note: $BIN_DIR is not on your PATH — add: export PATH=\"$BIN_DIR:\$PATH\"" ;;
 esac
 
-log "done: $("$BIN_DIR/pagers" --version 2>/dev/null || echo pagers)"
+log "done: $("$BIN_DIR/markers" --version 2>/dev/null || echo markers)"

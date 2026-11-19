@@ -5,7 +5,7 @@ order: 6
 
 # The graph page
 
-Every `pagers build` writes **`graph.html`** at the site root — an interactive,
+Every `markers build` writes **`graph.html`** at the site root — an interactive,
 dependency-free force-directed map of how pages link to each other. It's linked
 from the site header on every page.
 
@@ -18,17 +18,17 @@ from the site header on every page.
   "Open page" jumps to the page.
 - Dark/light theming follows the site toggle.
 
-The renderer (`crates/pagers-graph`) extracts edges during the build from the
+The renderer (`crates/markers-graph`) extracts edges during the build from the
 same link-resolution pass that rewrites URLs, so the graph always matches what
 readers can actually click.
 
 ## Standalone graph
 
-`pagers graph` scans a directory and writes the same data without building the
+`markers graph` scans a directory and writes the same data without building the
 site — useful for auditing link structure or embedding elsewhere:
 
 ```bash
-pagers graph ./docs
+markers graph ./docs
 # → graph.html, graph.json, graph.dot
 ```
 

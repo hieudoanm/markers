@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="Pager: turn Markdown into a docs site" xmlns:c2pa="http://c2pa.org/manifest">
-  <title>Pager</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="Markers: turn Markdown into a docs site" xmlns:c2pa="http://c2pa.org/manifest">
+  <title>Markers</title>
   <rect width="1280" height="640" fill="#F8FAFC"/>
 
   <!-- logo mark -->
@@ -29,7 +29,7 @@
 
   <!-- text -->
   <rect x="480" y="136" width="64" height="8" rx="4" fill="#F59E0B"/>
-  <text x="476" y="276" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="124" font-weight="800" fill="#1F2A44">Pager</text>
+  <text x="476" y="276" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="124" font-weight="800" fill="#1F2A44">Markers</text>
   <text x="480" y="336" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" fill="#475569">Turn Markdown into a docs site.</text>
   <text x="480" y="384" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" fill="#475569">No build step. Just HTML.</text>
 

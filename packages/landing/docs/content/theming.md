@@ -7,7 +7,7 @@ order: 5
 
 Markdown typography and palettes come from **md.css** — a single-entry Sass
 module migrated into this repo at `packages/md.scss`. The compiled stylesheet is
-embedded in the `pagers` binary, so built sites are fully self-contained (no
+embedded in the `markers` binary, so built sites are fully self-contained (no
 CDN, no runtime fetches).
 
 ## Palettes
@@ -59,5 +59,5 @@ pnpm run build      # → dist/md.css + dist/md.min.css (+ source maps)
 pnpm run examples   # regenerate themed cheat-sheet HTML/PNG examples
 ```
 
-The binary embeds `crates/pagers-theme/assets/md.css`; copy a fresh
-`dist/md.css` there and rebuild `pagers` to ship an updated stylesheet.
+The binary embeds `crates/markers-theme/assets/md.css`; copy a fresh
+`dist/md.css` there and rebuild `markers` to ship an updated stylesheet.

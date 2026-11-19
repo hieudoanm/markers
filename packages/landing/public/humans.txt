@@ -1,7 +1,7 @@
 /* TEAM */
-Project: pagers — static site generator for Markdown docs
-Site: https://hieudoanm.github.io/pagers/
-Source: https://github.com/hieudoanm/pagers
+Project: markers — static site generator for Markdown docs
+Site: https://hieudoanm.github.io/markers/
+Source: https://github.com/hieudoanm/markers
 
 /* SITE */
 Last update: 2026/11/11

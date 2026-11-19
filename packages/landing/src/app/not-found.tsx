@@ -6,7 +6,7 @@ const NotFound: NextPage = () => (
     <h1 className="text-4xl font-bold">404</h1>
     <p className="text-gray-500">This page does not exist.</p>
     <Link href="/" className="btn btn-primary">
-      Back to pagers
+      Back to markers
     </Link>
   </div>
 );

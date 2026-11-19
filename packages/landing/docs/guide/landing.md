@@ -5,17 +5,17 @@ order: 4
 
 # Landing pages
 
-`pagers landing` generates a **single-page static site** from one `landify.yaml`
-— no Node.js, no JavaScript runtime, no build step beyond the CLI itself. It is
-a port of the Go `landify` tool: strict YAML in, self-contained HTML/CSS/SVG
-out.
+`markers landing` generates a **single-page static site** from one
+`landing.yaml` — no Node.js, no JavaScript runtime, no build step beyond the CLI
+itself. It is a port of the Go `landify` tool: strict YAML in, self-contained
+HTML/CSS/SVG out.
 
 ```bash
-pagers landing new --type product   # scaffold an annotated landify.yaml
-pagers landing validate             # strict schema check
-pagers landing build -o public/     # render the site
-pagers landing preview --dir public # serve it locally
-pagers landing themes               # list the 64 built-in presets
+markers landing new --page-type product   # scaffold an annotated landing.yaml
+markers landing validate             # strict schema check
+markers landing build -o public/     # render the site
+markers landing preview --dir public # serve it locally
+markers landing themes               # list the 64 built-in presets
 ```
 
 ## Page types
@@ -45,7 +45,7 @@ theme are pure CSS driven by custom properties.
 
 Two ways to set colors:
 
-- **`theme: <name>`** — one of 64 built-in presets (`pagers landing themes`
+- **`theme: <name>`** — one of 64 built-in presets (`markers landing themes`
   lists them all; lookup is case-insensitive). `--theme <name>` on `build`
   overrides the YAML value.
 - **`theme:` block** — explicit `base`, `primary`, `secondary`, `neutral`,
@@ -57,7 +57,7 @@ tints/shades, readable foregrounds, borders, and semantic states — all compute
 for WCAG contrast and emitted as plain hex `--tokens` in the page's inline
 `<style>`. No `color-mix()`, no runtime theming.
 
-## `landify.yaml` structure
+## `landing.yaml` structure
 
 ```yaml
 site:
@@ -80,7 +80,7 @@ Unknown fields are rejected — `validate` catches typos before `build`.
 
 ## Build output
 
-`pagers landing build -o public/index.html` writes into the output directory:
+`markers landing build -o public/index.html` writes into the output directory:
 
 | File               | Contents                                                                                         |
 | ------------------ | ------------------------------------------------------------------------------------------------ |
@@ -98,7 +98,7 @@ Every file except `index.html` is **write-if-absent**: a `robots.txt`,
 `favicon.svg`, or `styles.css` you place in the output directory is never
 overwritten — drop in a customized file and rebuild freely. Delete it to
 regenerate the default on the next build. `index.html` itself always reflects
-the current `landify.yaml`.
+the current `landing.yaml`.
 
 The generated `<head>` already links `favicon.svg`, `site.webmanifest`, and
 `theme-color`, and carries Open Graph/Twitter tags when `site.og` is set. To
@@ -109,10 +109,10 @@ rsvg-convert -o public/og/og.png public/og/og.svg
 ```
 
 The
-[`examples/landing`](https://github.com/hieudoanm/pagers/tree/master/examples/landing)
+[`examples/landing`](https://github.com/hieudoanm/markers/tree/master/examples/landing)
 directory in this repository is a working `docs`-type config —
 `./scripts/examples.sh --landing` runs the full pipeline against it.
 
 ## Commands
 
-The full flag reference lives in [Commands](commands.md#pagers-landing).
+The full flag reference lives in [Commands](commands.md#markers-landing).
