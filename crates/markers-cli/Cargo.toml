@@ -10,7 +10,7 @@ name = "markers"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "=4.6.8", features = ["derive"] }
+clap = { version = "=4.6.9", features = ["derive"] }
 markers-build = { path = "../markers-build" }
 markers-graph = { path = "../markers-graph" }
 markers-grobid = { path = "../markers-grobid" }
