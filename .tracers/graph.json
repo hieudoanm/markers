@@ -133,6 +133,13 @@
   ],
   "frameworks": [
     {
+      "name": "anyhow",
+      "displayName": "anyhow",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
       "name": "axum",
       "displayName": "Axum",
       "family": "rust",
@@ -140,11 +147,25 @@
       "confidence": "medium"
     },
     {
+      "name": "chrono",
+      "displayName": "chrono",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
       "name": "clap.rs",
       "displayName": "clap.rs",
       "family": "rust",
       "version": null,
-      "confidence": "medium"
+      "confidence": "high"
+    },
+    {
+      "name": "futures",
+      "displayName": "futures-rs",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
     },
     {
       "name": "nextjs",
@@ -156,6 +177,76 @@
     {
       "name": "react",
       "displayName": "React",
+      "family": "ecmascript",
+      "version": "tailwindcss",
+      "confidence": "high"
+    },
+    {
+      "name": "reqwest",
+      "displayName": "reqwest",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "rusqlite",
+      "displayName": "rusqlite",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "rustls",
+      "displayName": "rustls",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "serde",
+      "displayName": "Serde",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "tailwindcss",
+      "displayName": "Tailwind CSS",
+      "family": "ecmascript",
+      "version": "tailwindcss",
+      "confidence": "medium"
+    },
+    {
+      "name": "tauri",
+      "displayName": "Tauri",
+      "family": "ecmascript",
+      "version": "types",
+      "confidence": "medium"
+    },
+    {
+      "name": "thiserror",
+      "displayName": "thiserror",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "tokio",
+      "displayName": "Tokio",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "tracing",
+      "displayName": "tracing",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "vitest",
+      "displayName": "Vitest",
       "family": "ecmascript",
       "version": "tailwindcss",
       "confidence": "high"
@@ -10621,6 +10712,16 @@
       "language": "bash"
     },
     {
+      "id": "framework:anyhow",
+      "kind": "framework",
+      "name": "anyhow",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "anyhow"
+      }
+    },
+    {
       "id": "framework:axum",
       "kind": "framework",
       "name": "Axum",
@@ -10631,13 +10732,33 @@
       }
     },
     {
+      "id": "framework:chrono",
+      "kind": "framework",
+      "name": "chrono",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "chrono"
+      }
+    },
+    {
       "id": "framework:clap.rs",
       "kind": "framework",
       "name": "clap.rs",
       "metadata": {
-        "confidence": "medium",
+        "confidence": "high",
         "family": "rust",
         "framework": "clap.rs"
+      }
+    },
+    {
+      "id": "framework:futures",
+      "kind": "framework",
+      "name": "futures-rs",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "futures"
       }
     },
     {
@@ -10658,6 +10779,106 @@
         "confidence": "high",
         "family": "ecmascript",
         "framework": "react"
+      }
+    },
+    {
+      "id": "framework:reqwest",
+      "kind": "framework",
+      "name": "reqwest",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "reqwest"
+      }
+    },
+    {
+      "id": "framework:rusqlite",
+      "kind": "framework",
+      "name": "rusqlite",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "rusqlite"
+      }
+    },
+    {
+      "id": "framework:rustls",
+      "kind": "framework",
+      "name": "rustls",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "rustls"
+      }
+    },
+    {
+      "id": "framework:serde",
+      "kind": "framework",
+      "name": "Serde",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "serde"
+      }
+    },
+    {
+      "id": "framework:tailwindcss:tailwindcss",
+      "kind": "framework",
+      "name": "Tailwind CSS",
+      "metadata": {
+        "confidence": "medium",
+        "family": "ecmascript",
+        "framework": "tailwindcss"
+      }
+    },
+    {
+      "id": "framework:tauri:types",
+      "kind": "framework",
+      "name": "Tauri",
+      "metadata": {
+        "confidence": "medium",
+        "family": "ecmascript",
+        "framework": "tauri"
+      }
+    },
+    {
+      "id": "framework:thiserror",
+      "kind": "framework",
+      "name": "thiserror",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "thiserror"
+      }
+    },
+    {
+      "id": "framework:tokio",
+      "kind": "framework",
+      "name": "Tokio",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "tokio"
+      }
+    },
+    {
+      "id": "framework:tracing",
+      "kind": "framework",
+      "name": "tracing",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "tracing"
+      }
+    },
+    {
+      "id": "framework:vitest:tailwindcss",
+      "kind": "framework",
+      "name": "Vitest",
+      "metadata": {
+        "confidence": "high",
+        "family": "ecmascript",
+        "framework": "vitest"
       }
     },
     {
@@ -249024,6 +249245,13 @@
     },
     {
       "source": "repository:.",
+      "target": "framework:anyhow",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
       "target": "framework:axum",
       "kind": "uses_framework",
       "status": "resolved_internal",
@@ -249031,7 +249259,21 @@
     },
     {
       "source": "repository:.",
+      "target": "framework:chrono",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
       "target": "framework:clap.rs",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:futures",
       "kind": "uses_framework",
       "status": "resolved_internal",
       "origin": "syntax"
@@ -249046,6 +249288,76 @@
     {
       "source": "repository:.",
       "target": "framework:react:tailwindcss",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:reqwest",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:rusqlite",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:rustls",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:serde",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tailwindcss:tailwindcss",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tauri:types",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:thiserror",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tokio",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tracing",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:vitest:tailwindcss",
       "kind": "uses_framework",
       "status": "resolved_internal",
       "origin": "syntax"
@@ -252309,8 +252621,8 @@
   "statistics": {
     "files": 174,
     "packages": 4,
-    "nodes": 4204,
-    "edges": 11559,
+    "nodes": 4217,
+    "edges": 11572,
     "symbols": 2646,
     "unresolvedEdges": 3248,
     "diagnostics": 67,
@@ -252319,7 +252631,7 @@
       "enum": 10,
       "external_symbol": 462,
       "file": 174,
-      "framework": 4,
+      "framework": 17,
       "function": 519,
       "interface": 25,
       "method": 67,
@@ -252341,7 +252653,7 @@
       "implements": 3,
       "imports": 527,
       "inherits": 1,
-      "uses_framework": 4,
+      "uses_framework": 17,
       "uses_type": 673
     },
     "byLanguage": {
@@ -252354,14 +252666,27 @@
     },
     "byStatus": {
       "resolved_external": 792,
-      "resolved_internal": 7519,
+      "resolved_internal": 7532,
       "unresolved": 3248
     },
     "byFramework": {
+      "anyhow": 1,
       "axum": 1,
+      "chrono": 1,
       "clap.rs": 1,
+      "futures": 1,
       "nextjs": 1,
-      "react": 1
+      "react": 1,
+      "reqwest": 1,
+      "rusqlite": 1,
+      "rustls": 1,
+      "serde": 1,
+      "tailwindcss": 1,
+      "tauri": 1,
+      "thiserror": 1,
+      "tokio": 1,
+      "tracing": 1,
+      "vitest": 1
     }
   }
 }
