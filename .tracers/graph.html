@@ -458,8 +458,8 @@
   "tracersVersion": "0.0.1",
   "repository": {
     "id": "repository:.",
-    "name": "repository",
-    "root": ".",
+    "name": "markers",
+    "root": "/Users/hieudoan/git/github.com/hieudoanm/markers",
     "fileCount": 174,
     "languageCount": 23
   },
@@ -8376,12 +8376,6 @@
       "id": "external:rust:config.url.is_empty",
       "kind": "external_symbol",
       "name": "is_empty",
-      "language": "rust"
-    },
-    {
-      "id": "external:rust:crate::build::BuildError.UnknownTheme",
-      "kind": "external_symbol",
-      "name": "UnknownTheme",
       "language": "rust"
     },
     {
@@ -45068,12 +45062,6 @@
       "language": "rust"
     },
     {
-      "id": "unresolved:rust:client::PageInfo",
-      "kind": "unknown",
-      "name": "client::PageInfo",
-      "language": "rust"
-    },
-    {
       "id": "unresolved:rust:commit",
       "kind": "unknown",
       "name": "commit",
@@ -45089,30 +45077,6 @@
       "id": "unresolved:rust:convert",
       "kind": "unknown",
       "name": "convert",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:crate::build::BuildError",
-      "kind": "unknown",
-      "name": "crate::build::BuildError",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:crate::build::BuildError::Invalid",
-      "kind": "unknown",
-      "name": "crate::build::BuildError::Invalid",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:crate::build::OgCardTemplate",
-      "kind": "unknown",
-      "name": "crate::build::OgCardTemplate",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:crate::render::ParsedReference",
-      "kind": "unknown",
-      "name": "crate::render::ParsedReference",
       "language": "rust"
     },
     {
@@ -45599,18 +45563,6 @@
       "id": "unresolved:rust:log_corpus_summary",
       "kind": "unknown",
       "name": "log_corpus_summary",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:markers_site::config::Config",
-      "kind": "unknown",
-      "name": "markers_site::config::Config",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:markers_wiki::metadata::Article",
-      "kind": "unknown",
-      "name": "markers_wiki::metadata::Article",
       "language": "rust"
     },
     {
@@ -46121,12 +46073,6 @@
       "id": "unresolved:rust:upsert_work",
       "kind": "unknown",
       "name": "upsert_work",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:url",
-      "kind": "unknown",
-      "name": "url",
       "language": "rust"
     },
     {
@@ -116297,10 +116243,10 @@
     },
     {
       "source": "function:crates/markers-graph/src/lib.rs::apply_base_path",
-      "target": "unresolved:rust:url",
+      "target": "method:crates/markers-site/src/config.rs::Config.url",
       "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
+      "status": "resolved_internal",
+      "origin": "lexical",
       "sites": [
         {
           "start": {
@@ -116339,9 +116285,9 @@
     },
     {
       "source": "function:crates/markers-graph/src/lib.rs::apply_base_path",
-      "target": "unresolved:rust:markers_site::config::Config",
+      "target": "struct:crates/markers-site/src/config.rs::Config",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -155582,9 +155528,9 @@
     },
     {
       "source": "function:crates/markers-landing/src/load.rs::render_config",
-      "target": "external:rust:crate::build::BuildError.UnknownTheme",
+      "target": "constant:crates/markers-landing/src/build.rs::BuildError.UnknownTheme",
       "kind": "calls",
-      "status": "resolved_external",
+      "status": "resolved_internal",
       "origin": "lexical",
       "sites": [
         {
@@ -155879,6 +155825,39 @@
     },
     {
       "source": "function:crates/markers-landing/src/load.rs::render_config",
+      "target": "enum:crates/markers-landing/src/build.rs::BuildError",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 32,
+            "column": 71,
+            "byte": 1145
+          },
+          "end": {
+            "line": 32,
+            "column": 95,
+            "byte": 1169
+          }
+        },
+        {
+          "start": {
+            "line": 45,
+            "column": 20,
+            "byte": 1651
+          },
+          "end": {
+            "line": 45,
+            "column": 53,
+            "byte": 1684
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-landing/src/load.rs::render_config",
       "target": "external:rust:std::Path",
       "kind": "uses_type",
       "status": "resolved_external",
@@ -155915,48 +155894,6 @@
             "line": 32,
             "column": 69,
             "byte": 1143
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-landing/src/load.rs::render_config",
-      "target": "unresolved:rust:crate::build::BuildError",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 32,
-            "column": 71,
-            "byte": 1145
-          },
-          "end": {
-            "line": 32,
-            "column": 95,
-            "byte": 1169
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-landing/src/load.rs::render_config",
-      "target": "unresolved:rust:crate::build::BuildError::Invalid",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 45,
-            "column": 20,
-            "byte": 1651
-          },
-          "end": {
-            "line": 45,
-            "column": 53,
-            "byte": 1684
           }
         }
       ]
@@ -158606,6 +158543,27 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::og_card",
+      "target": "enum:crates/markers-landing/src/build.rs::BuildError",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 192,
+            "column": 44,
+            "byte": 4784
+          },
+          "end": {
+            "line": 192,
+            "column": 68,
+            "byte": 4808
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-landing/src/og.rs::og_card",
       "target": "struct:crates/markers-landing/src/config.rs::Config",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -158687,27 +158645,6 @@
             "line": 224,
             "column": 26,
             "byte": 5832
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-landing/src/og.rs::og_card",
-      "target": "unresolved:rust:crate::build::BuildError",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 192,
-            "column": 44,
-            "byte": 4784
-          },
-          "end": {
-            "line": 192,
-            "column": 68,
-            "byte": 4808
           }
         }
       ]
@@ -159632,6 +159569,27 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::og_colors",
+      "target": "enum:crates/markers-landing/src/build.rs::BuildError",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 235,
+            "column": 50,
+            "byte": 6071
+          },
+          "end": {
+            "line": 235,
+            "column": 74,
+            "byte": 6095
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-landing/src/og.rs::og_colors",
       "target": "struct:crates/markers-landing/src/og.rs::OgColor",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -159680,27 +159638,6 @@
             "line": 235,
             "column": 29,
             "byte": 6050
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-landing/src/og.rs::og_colors",
-      "target": "unresolved:rust:crate::build::BuildError",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 235,
-            "column": 50,
-            "byte": 6071
-          },
-          "end": {
-            "line": 235,
-            "column": 74,
-            "byte": 6095
           }
         }
       ]
@@ -160286,9 +160223,9 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::og_ink_on",
-      "target": "unresolved:rust:crate::build::BuildError",
+      "target": "enum:crates/markers-landing/src/build.rs::BuildError",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -161963,27 +161900,6 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::render_og",
-      "target": "function:crates/markers-landing/src/build.rs::render",
-      "kind": "calls",
-      "status": "resolved_internal",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 189,
-            "column": 8,
-            "byte": 4682
-          },
-          "end": {
-            "line": 189,
-            "column": 61,
-            "byte": 4735
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-landing/src/og.rs::render_og",
       "target": "function:crates/markers-landing/src/og.rs::og_card",
       "kind": "calls",
       "status": "resolved_internal",
@@ -162005,30 +161921,30 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::render_og",
-      "target": "struct:crates/markers-landing/src/config.rs::Config",
-      "kind": "uses_type",
-      "status": "resolved_internal",
+      "target": "unresolved:rust:render",
+      "kind": "calls",
+      "status": "unresolved",
       "origin": "syntax",
       "sites": [
         {
           "start": {
-            "line": 186,
-            "column": 24,
-            "byte": 4565
+            "line": 189,
+            "column": 8,
+            "byte": 4682
           },
           "end": {
-            "line": 186,
-            "column": 30,
-            "byte": 4571
+            "line": 189,
+            "column": 61,
+            "byte": 4735
           }
         }
       ]
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::render_og",
-      "target": "unresolved:rust:crate::build::BuildError",
+      "target": "enum:crates/markers-landing/src/build.rs::BuildError",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -162047,9 +161963,9 @@
     },
     {
       "source": "function:crates/markers-landing/src/og.rs::render_og",
-      "target": "unresolved:rust:crate::build::OgCardTemplate",
+      "target": "struct:crates/markers-landing/src/build.rs::OgCardTemplate",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -162062,6 +161978,27 @@
             "line": 189,
             "column": 36,
             "byte": 4710
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-landing/src/og.rs::render_og",
+      "target": "struct:crates/markers-landing/src/config.rs::Config",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 186,
+            "column": 24,
+            "byte": 4565
+          },
+          "end": {
+            "line": 186,
+            "column": 30,
+            "byte": 4571
           }
         }
       ]
@@ -190283,6 +190220,27 @@
     },
     {
       "source": "function:crates/markers-wiki/src/lib.rs::convert_html",
+      "target": "struct:crates/markers-wiki/src/client.rs::PageInfo",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 75,
+            "column": 24,
+            "byte": 2394
+          },
+          "end": {
+            "line": 75,
+            "column": 40,
+            "byte": 2410
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-wiki/src/lib.rs::convert_html",
       "target": "struct:crates/markers-wiki/src/converter.rs::CleanContext",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -190373,27 +190331,6 @@
             "line": 73,
             "column": 26,
             "byte": 2344
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-wiki/src/lib.rs::convert_html",
-      "target": "unresolved:rust:client::PageInfo",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 75,
-            "column": 24,
-            "byte": 2394
-          },
-          "end": {
-            "line": 75,
-            "column": 40,
-            "byte": 2410
           }
         }
       ]
@@ -194039,9 +193976,9 @@
     },
     {
       "source": "function:crates/markers-wiki/tests/wiki.rs::convert",
-      "target": "unresolved:rust:markers_wiki::metadata::Article",
+      "target": "struct:crates/markers-wiki/src/metadata.rs::Article",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -245356,9 +245293,9 @@
     },
     {
       "source": "struct:crates/markers-grobid/src/corpus/mod.rs::Work",
-      "target": "unresolved:rust:crate::render::ParsedReference",
+      "target": "struct:crates/markers-grobid/src/render/references.rs::ParsedReference",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -247736,15 +247673,15 @@
   "statistics": {
     "files": 174,
     "packages": 4,
-    "nodes": 3923,
-    "edges": 11508,
+    "nodes": 3914,
+    "edges": 11507,
     "symbols": 2675,
-    "unresolvedEdges": 636,
+    "unresolvedEdges": 625,
     "diagnostics": 33,
     "byNodeKind": {
       "constant": 313,
       "enum": 10,
-      "external_symbol": 536,
+      "external_symbol": 535,
       "file": 174,
       "framework": 17,
       "function": 519,
@@ -247757,7 +247694,7 @@
       "struct": 115,
       "trait": 1,
       "type": 7,
-      "unknown": 271,
+      "unknown": 263,
       "variable": 1011
     },
     "byEdgeKind": {
@@ -247769,20 +247706,20 @@
       "imports": 357,
       "inherits": 1,
       "uses_framework": 17,
-      "uses_type": 671
+      "uses_type": 670
     },
     "byLanguage": {
       "bash": 18,
       "javascript": 141,
       "markdown": 111,
-      "rust": 3113,
+      "rust": 3104,
       "tsx": 291,
       "typescript": 227
     },
     "byStatus": {
-      "resolved_external": 2841,
-      "resolved_internal": 8031,
-      "unresolved": 636
+      "resolved_external": 2840,
+      "resolved_internal": 8042,
+      "unresolved": 625
     },
     "byFramework": {
       "anyhow": 1,
