@@ -488,6 +488,7 @@ digraph tracers {
   "external:rust:scraper::Html" [label="Html\nexternal_symbol", color="lightgray"];
   "external:rust:self.url.is_empty" [label="is_empty\nexternal_symbol", color="lightgray"];
   "external:rust:self.url.is_some" [label="is_some\nexternal_symbol", color="lightgray"];
+  "external:rust:serde.Serialize" [label="Serialize\nexternal_symbol", color="lightgray"];
   "external:rust:serde_json.Value" [label="Value\nexternal_symbol", color="lightgray"];
   "external:rust:serde_json.from_str" [label="from_str\nexternal_symbol", color="lightgray"];
   "external:rust:serde_json.to_string" [label="to_string\nexternal_symbol", color="lightgray"];
@@ -610,6 +611,7 @@ digraph tracers {
   "external:rust:std::fs::remove_dir_all.ok" [label="ok\nexternal_symbol", color="lightgray"];
   "external:rust:std::fs::write.map_err" [label="map_err\nexternal_symbol", color="lightgray"];
   "external:rust:std::fs::write.unwrap" [label="unwrap\nexternal_symbol", color="lightgray"];
+  "external:rust:std::future.Future" [label="Future\nexternal_symbol", color="lightgray"];
   "external:rust:std::get" [label="get\nexternal_symbol", color="lightgray"];
   "external:rust:std::include_bytes" [label="include_bytes\nexternal_symbol", color="lightgray"];
   "external:rust:std::include_str" [label="include_str\nexternal_symbol", color="lightgray"];
@@ -2803,7 +2805,6 @@ digraph tracers {
   "unresolved:rust:parent" [label="parent\nunknown", color="black"];
   "unresolved:rust:parse_block" [label="parse_block\nunknown", color="black"];
   "unresolved:rust:path" [label="path\nunknown", color="black"];
-  "unresolved:rust:pdf_to_tei" [label="pdf_to_tei\nunknown", color="black"];
   "unresolved:rust:post" [label="post\nunknown", color="black"];
   "unresolved:rust:powf" [label="powf\nunknown", color="black"];
   "unresolved:rust:prepare" [label="prepare\nunknown", color="black"];
@@ -2844,7 +2845,6 @@ digraph tracers {
   "unresolved:rust:stderr" [label="stderr\nunknown", color="black"];
   "unresolved:rust:stdin" [label="stdin\nunknown", color="black"];
   "unresolved:rust:stdout" [label="stdout\nunknown", color="black"];
-  "unresolved:rust:stop_local_service" [label="stop_local_service\nunknown", color="black"];
   "unresolved:rust:store" [label="store\nunknown", color="black"];
   "unresolved:rust:success" [label="success\nunknown", color="black"];
   "unresolved:rust:tag_name" [label="tag_name\nunknown", color="black"];
@@ -8204,11 +8204,13 @@ digraph tracers {
   "function:crates/markers-cli/src/grobid.rs::block_on" -> "external:rust:tokio::runtime::Builder::new_multi_thread.build" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::block_on" -> "external:rust:tokio::runtime::Builder::new_multi_thread.enable_all" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::block_on" -> "external:rust:tokio::runtime::Builder::new_multi_thread.expect" [label="calls", style="bold"];
+  "function:crates/markers-cli/src/grobid.rs::block_on" -> "external:rust:std::future.Future" [label="uses_type", style="dotted"];
   "function:crates/markers-cli/src/grobid.rs::block_on" -> "unresolved:rust:F::Output" [label="uses_type", style="dotted"];
   "function:crates/markers-cli/src/grobid.rs::finish" -> "external:rust:ExitCode.from" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::finish" -> "external:rust:std::eprintln" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::finish" -> "unresolved:rust:clamp" [label="calls", style="dotted"];
   "function:crates/markers-cli/src/grobid.rs::finish" -> "external:rust:std::ExitCode" [label="uses_type", style="dotted"];
+  "function:crates/markers-cli/src/grobid.rs::finish" -> "external:rust:std::fmt.Display" [label="uses_type", style="dotted"];
   "function:crates/markers-cli/src/grobid.rs::run" -> "external:rust:std::env.var" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::run" -> "external:rust:std::env::var.ok" [label="calls", style="bold"];
   "function:crates/markers-cli/src/grobid.rs::run" -> "external:rust:std::map" [label="calls", style="bold"];
@@ -8738,6 +8740,7 @@ digraph tracers {
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "external:rust:std::write" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/cli.rs::build_work" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/cli.rs::resolve_metadata" [label="calls", style="bold"];
+  "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/grobid_client/pdf.rs::pdf_to_tei" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/paths.rs::md_path" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/paths.rs::tei_path" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "function:crates/markers-grobid/src/render/convert.rs::convert_tei_to_md" [label="calls", style="bold"];
@@ -8747,7 +8750,6 @@ digraph tracers {
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "unresolved:rust:exists" [label="calls", style="dotted"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "unresolved:rust:file_name" [label="calls", style="dotted"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "unresolved:rust:info" [label="calls", style="dotted"];
-  "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "unresolved:rust:pdf_to_tei" [label="calls", style="dotted"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "unresolved:rust:to_string_lossy" [label="calls", style="dotted"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "external:rust:reqwest.Client" [label="uses_type", style="dotted"];
   "function:crates/markers-grobid/src/cli.rs::process_pdf" -> "external:rust:std::Path" [label="uses_type", style="dotted"];
@@ -9174,6 +9176,7 @@ digraph tracers {
   "function:crates/markers-grobid/src/mcp.rs::json_result" -> "external:rust:std::vec" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/mcp.rs::json_result" -> "external:rust:rmcp::CallToolResult" [label="uses_type", style="dotted"];
   "function:crates/markers-grobid/src/mcp.rs::json_result" -> "external:rust:rmcp::ErrorData" [label="uses_type", style="dotted"];
+  "function:crates/markers-grobid/src/mcp.rs::json_result" -> "external:rust:serde.Serialize" [label="uses_type", style="dotted"];
   "function:crates/markers-grobid/src/mcp.rs::pct_decode" -> "external:rust:String.from_utf8_lossy" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/mcp.rs::pct_decode" -> "external:rust:Vec.with_capacity" [label="calls", style="bold"];
   "function:crates/markers-grobid/src/mcp.rs::pct_decode" -> "external:rust:std::len" [label="calls", style="bold"];
@@ -11392,11 +11395,11 @@ digraph tracers {
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:std::map_err" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:std::to_string" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:std::unwrap_or_default" [label="calls", style="bold"];
+  "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "function:crates/markers-grobid/src/grobid_client/pdf.rs::pdf_to_tei" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "function:crates/markers-grobid/src/metadata/mod.rs::extract_metadata_from_tei" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "function:crates/markers-grobid/src/render/convert.rs::convert_tei_to_md" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "function:packages/desktop/src-tauri/src/lib.rs::pdf_stem" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "unresolved:rust:exists" [label="calls", style="dotted"];
-  "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "unresolved:rust:pdf_to_tei" [label="calls", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:reqwest.Client" [label="uses_type", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:std::Path" [label="uses_type", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_one" -> "external:rust:std::PathBuf" [label="uses_type", style="dotted"];
@@ -11415,13 +11418,13 @@ digraph tracers {
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "external:rust:std::push" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "external:rust:std::to_string" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "external:rust:std::unwrap_or_else" [label="calls", style="bold"];
+  "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "function:crates/markers-grobid/src/grobid_client/local.rs::stop_local_service" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "function:packages/desktop/src-tauri/src/lib.rs::convert_one" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "function:packages/desktop/src-tauri/src/lib.rs::default_out_dir" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "function:packages/desktop/src-tauri/src/lib.rs::ensure_grobid" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "function:packages/desktop/src-tauri/src/lib.rs::http_client" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "struct:packages/desktop/src-tauri/src/lib.rs::FileOutcome" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "unresolved:rust:file_name" [label="calls", style="dotted"];
-  "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "unresolved:rust:stop_local_service" [label="calls", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "unresolved:rust:to_string_lossy" [label="calls", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs" -> "struct:packages/desktop/src-tauri/src/lib.rs::FileOutcome" [label="uses_type", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "external:rust:Vec.new" [label="calls", style="bold"];
@@ -11446,11 +11449,11 @@ digraph tracers {
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "external:rust:std::push" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "external:rust:std::to_lowercase" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "external:rust:std::to_string" [label="calls", style="bold"];
+  "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "function:crates/markers-grobid/src/grobid_client/local.rs::stop_local_service" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "function:packages/desktop/src-tauri/src/lib.rs::convert_one" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "function:packages/desktop/src-tauri/src/lib.rs::ensure_grobid" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "function:packages/desktop/src-tauri/src/lib.rs::http_client" [label="calls", style="bold"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "struct:packages/desktop/src-tauri/src/lib.rs::UploadOutcome" [label="calls", style="bold"];
-  "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "unresolved:rust:stop_local_service" [label="calls", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "struct:packages/desktop/src-tauri/src/lib.rs::UploadFile" [label="uses_type", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads" -> "struct:packages/desktop/src-tauri/src/lib.rs::UploadOutcome" [label="uses_type", style="dotted"];
   "function:packages/desktop/src-tauri/src/lib.rs::default_out_dir" -> "external:rust:Path.new" [label="calls", style="bold"];
@@ -11900,10 +11903,10 @@ digraph tracers {
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:std::map" [label="calls", style="bold"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:std::map_err" [label="calls", style="bold"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:std::unwrap_or_else" [label="calls", style="bold"];
+  "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "function:crates/markers-grobid/src/corpus/graph.rs::render_graph_html" [label="calls", style="bold"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "function:crates/markers-grobid/src/corpus/mod.rs::open_db" [label="calls", style="bold"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "function:crates/markers-grobid/src/mcp.rs::json_result" [label="calls", style="bold"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "unresolved:rust:parent" [label="calls", style="dotted"];
-  "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "unresolved:rust:render_graph_html" [label="calls", style="dotted"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:rmcp::CallToolResult" [label="uses_type", style="dotted"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:rmcp::ErrorData" [label="uses_type", style="dotted"];
   "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph" -> "external:rust:rmcp::Parameters" [label="uses_type", style="dotted"];
