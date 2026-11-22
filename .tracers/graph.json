@@ -8332,6 +8332,12 @@
       "language": "rust"
     },
     {
+      "id": "external:rust:serde.Serialize",
+      "kind": "external_symbol",
+      "name": "Serialize",
+      "language": "rust"
+    },
+    {
       "id": "external:rust:serde_json.Value",
       "kind": "external_symbol",
       "name": "Value",
@@ -9061,6 +9067,12 @@
       "id": "external:rust:std::fs::write.unwrap",
       "kind": "external_symbol",
       "name": "unwrap",
+      "language": "rust"
+    },
+    {
+      "id": "external:rust:std::future.Future",
+      "kind": "external_symbol",
+      "name": "Future",
       "language": "rust"
     },
     {
@@ -45225,12 +45237,6 @@
       "language": "rust"
     },
     {
-      "id": "unresolved:rust:pdf_to_tei",
-      "kind": "unknown",
-      "name": "pdf_to_tei",
-      "language": "rust"
-    },
-    {
       "id": "unresolved:rust:post",
       "kind": "unknown",
       "name": "post",
@@ -45468,12 +45474,6 @@
       "id": "unresolved:rust:stdout",
       "kind": "unknown",
       "name": "stdout",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:stop_local_service",
-      "kind": "unknown",
-      "name": "stop_local_service",
       "language": "rust"
     },
     {
@@ -108792,6 +108792,27 @@
     },
     {
       "source": "function:crates/markers-cli/src/grobid.rs::block_on",
+      "target": "external:rust:std::future.Future",
+      "kind": "uses_type",
+      "status": "resolved_external",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 110,
+            "column": 16,
+            "byte": 3790
+          },
+          "end": {
+            "line": 110,
+            "column": 35,
+            "byte": 3809
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-cli/src/grobid.rs::block_on",
       "target": "unresolved:rust:F::Output",
       "kind": "uses_type",
       "status": "unresolved",
@@ -108891,6 +108912,27 @@
             "line": 100,
             "column": 68,
             "byte": 3576
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-cli/src/grobid.rs::finish",
+      "target": "external:rust:std::fmt.Display",
+      "kind": "uses_type",
+      "status": "resolved_external",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 100,
+            "column": 14,
+            "byte": 3522
+          },
+          "end": {
+            "line": 100,
+            "column": 31,
+            "byte": 3539
           }
         }
       ]
@@ -123078,6 +123120,27 @@
     },
     {
       "source": "function:crates/markers-grobid/src/cli.rs::process_pdf",
+      "target": "function:crates/markers-grobid/src/grobid_client/pdf.rs::pdf_to_tei",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 80,
+            "column": 13,
+            "byte": 2725
+          },
+          "end": {
+            "line": 80,
+            "column": 67,
+            "byte": 2779
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-grobid/src/cli.rs::process_pdf",
       "target": "function:crates/markers-grobid/src/paths.rs::md_path",
       "kind": "calls",
       "status": "resolved_internal",
@@ -123489,27 +123552,6 @@
             "line": 146,
             "column": 19,
             "byte": 5164
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/markers-grobid/src/cli.rs::process_pdf",
-      "target": "unresolved:rust:pdf_to_tei",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 80,
-            "column": 13,
-            "byte": 2725
-          },
-          "end": {
-            "line": 80,
-            "column": 67,
-            "byte": 2779
           }
         }
       ]
@@ -134736,6 +134778,27 @@
             "line": 85,
             "column": 82,
             "byte": 2436
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/markers-grobid/src/mcp.rs::json_result",
+      "target": "external:rust:serde.Serialize",
+      "kind": "uses_type",
+      "status": "resolved_external",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 85,
+            "column": 19,
+            "byte": 2373
+          },
+          "end": {
+            "line": 85,
+            "column": 35,
+            "byte": 2389
           }
         }
       ]
@@ -195120,6 +195183,27 @@
     },
     {
       "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_one",
+      "target": "function:crates/markers-grobid/src/grobid_client/pdf.rs::pdf_to_tei",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 67,
+            "column": 32,
+            "byte": 1959
+          },
+          "end": {
+            "line": 67,
+            "column": 93,
+            "byte": 2020
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_one",
       "target": "function:crates/markers-grobid/src/metadata/mod.rs::extract_metadata_from_tei",
       "kind": "calls",
       "status": "resolved_internal",
@@ -195198,27 +195282,6 @@
             "line": 66,
             "column": 26,
             "byte": 1925
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_one",
-      "target": "unresolved:rust:pdf_to_tei",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 67,
-            "column": 32,
-            "byte": 1959
-          },
-          "end": {
-            "line": 67,
-            "column": 93,
-            "byte": 2020
           }
         }
       ]
@@ -195711,6 +195774,27 @@
     },
     {
       "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs",
+      "target": "function:crates/markers-grobid/src/grobid_client/local.rs::stop_local_service",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 167,
+            "column": 5,
+            "byte": 5209
+          },
+          "end": {
+            "line": 167,
+            "column": 40,
+            "byte": 5244
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs",
       "target": "function:packages/desktop/src-tauri/src/lib.rs::convert_one",
       "kind": "calls",
       "status": "resolved_internal",
@@ -195843,27 +195927,6 @@
             "line": 147,
             "column": 25,
             "byte": 4544
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_pdfs",
-      "target": "unresolved:rust:stop_local_service",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 167,
-            "column": 5,
-            "byte": 5209
-          },
-          "end": {
-            "line": 167,
-            "column": 40,
-            "byte": 5244
           }
         }
       ]
@@ -196614,6 +196677,27 @@
     },
     {
       "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads",
+      "target": "function:crates/markers-grobid/src/grobid_client/local.rs::stop_local_service",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 221,
+            "column": 5,
+            "byte": 7160
+          },
+          "end": {
+            "line": 221,
+            "column": 40,
+            "byte": 7195
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads",
       "target": "function:packages/desktop/src-tauri/src/lib.rs::convert_one",
       "kind": "calls",
       "status": "resolved_internal",
@@ -196704,27 +196788,6 @@
             "line": 217,
             "column": 14,
             "byte": 7094
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:packages/desktop/src-tauri/src/lib.rs::convert_uploads",
-      "target": "unresolved:rust:stop_local_service",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 221,
-            "column": 5,
-            "byte": 7160
-          },
-          "end": {
-            "line": 221,
-            "column": 40,
-            "byte": 7195
           }
         }
       ]
@@ -208956,6 +209019,27 @@
     },
     {
       "source": "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph",
+      "target": "function:crates/markers-grobid/src/corpus/graph.rs::render_graph_html",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 181,
+            "column": 20,
+            "byte": 6033
+          },
+          "end": {
+            "line": 181,
+            "column": 50,
+            "byte": 6063
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph",
       "target": "function:crates/markers-grobid/src/corpus/mod.rs::open_db",
       "kind": "calls",
       "status": "resolved_internal",
@@ -209013,27 +209097,6 @@
             "line": 183,
             "column": 43,
             "byte": 6210
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/markers-grobid/src/mcp.rs::GrobidMcp.grobid_graph",
-      "target": "unresolved:rust:render_graph_html",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 181,
-            "column": 20,
-            "byte": 6033
-          },
-          "end": {
-            "line": 181,
-            "column": 50,
-            "byte": 6063
           }
         }
       ]
@@ -247219,14 +247282,14 @@
     "files": 174,
     "packages": 4,
     "nodes": 3914,
-    "edges": 11507,
+    "edges": 11510,
     "symbols": 2675,
-    "unresolvedEdges": 625,
+    "unresolvedEdges": 620,
     "diagnostics": 33,
     "byNodeKind": {
       "constant": 313,
       "enum": 10,
-      "external_symbol": 535,
+      "external_symbol": 537,
       "file": 174,
       "framework": 17,
       "function": 519,
@@ -247239,7 +247302,7 @@
       "struct": 115,
       "trait": 1,
       "type": 7,
-      "unknown": 263,
+      "unknown": 261,
       "variable": 1011
     },
     "byEdgeKind": {
@@ -247251,7 +247314,7 @@
       "imports": 357,
       "inherits": 1,
       "uses_framework": 17,
-      "uses_type": 670
+      "uses_type": 673
     },
     "byLanguage": {
       "bash": 18,
@@ -247262,9 +247325,9 @@
       "typescript": 227
     },
     "byStatus": {
-      "resolved_external": 2840,
-      "resolved_internal": 8042,
-      "unresolved": 625
+      "resolved_external": 2843,
+      "resolved_internal": 8047,
+      "unresolved": 620
     },
     "byFramework": {
       "anyhow": 1,
