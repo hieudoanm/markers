@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: 'vs docsify', href: '#compare' },
   { label: 'Quickstart', href: '#quickstart' },
   { label: 'Docs', href: '/docs/' },
+  { label: 'Downloads', href: '/downloads/' },
 ];
 
 export const metadata: Metadata = {
