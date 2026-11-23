@@ -72,16 +72,16 @@ jobs:
         shell: bash
         run: |
           case "${{ matrix.os }}" in
-            ubuntu-latest) mv target/release/markers markers-x86_64-unknown-linux-gnu ;;
-            macos-latest) mv target/release/markers markers-aarch64-apple-darwin ;;
-            windows-latest) mv target/release/markers.exe markers-x86_64-pc-windows-msvc.exe ;;
+            ubuntu-latest) mv target/release/markers cli-markers-x86_64-unknown-linux-gnu ;;
+            macos-latest) mv target/release/markers cli-markers-aarch64-apple-darwin ;;
+            windows-latest) mv target/release/markers.exe cli-markers-x86_64-pc-windows-msvc.exe ;;
           esac
 
       - name: Upload CLI binary
         uses: actions/upload-artifact@v7.0.2
         with:
-          name: markers-cli-${{ matrix.os }}
-          path: markers-*
+          name: cli-markers-${{ matrix.os }}
+          path: cli-markers-*
           if-no-files-found: error
           retention-days: 7
 
@@ -101,7 +101,7 @@ jobs:
         uses: actions/download-artifact@v8.0.2
         with:
           path: dist
-          pattern: markers-cli-*
+          pattern: cli-markers-*
           merge-multiple: true
 
       - name: Delete existing latest release
