@@ -6,14 +6,14 @@ import Features, { type Feature } from '@/components/molecules/Features';
 import Hero from '@/components/molecules/Hero';
 import CTA from '@/components/molecules/CTA';
 import {
-  LuBot,
-  LuFileText,
-  LuGlobe,
-  LuLayoutTemplate,
-  LuPalette,
-  LuWorkflow,
-  LuZap,
-} from 'react-icons/lu';
+  PiRobot,
+  PiFileText,
+  PiGlobe,
+  PiPalette,
+  PiLightning,
+  PiLayout,
+  PiFlowArrow,
+} from 'react-icons/pi';
 
 export const metadata: Metadata = {
   title: { absolute: 'markers — static site generator for Markdown docs' },
@@ -107,37 +107,37 @@ const Terminal: FC<TerminalProps> = ({ lines }) => (
 
 const FEATURES: Feature[] = [
   {
-    icon: LuZap,
+    icon: PiLightning,
     title: 'Zero configuration',
     body: 'Point markers at a folder of Markdown and it builds a complete site — sidebar navigation, clean trailing-slash URLs, and an "On this page" outline are generated for you.',
   },
   {
-    icon: LuFileText,
+    icon: PiFileText,
     title: 'GitHub-flavoured Markdown',
     body: 'Tables, task lists, footnotes, alerts, fenced code with per-language accents, and {#custom-ids} — rendered by pulldown-cmark, no JavaScript required.',
   },
   {
-    icon: LuPalette,
+    icon: PiPalette,
     title: 'Eight themes, light & dark',
     body: 'A compiled md.css with light, dark and six colour palettes. Theme follows the OS by default, with a one-click toggle persisted in localStorage.',
   },
   {
-    icon: LuWorkflow,
+    icon: PiFlowArrow,
     title: 'Built-in page graph',
     body: 'Every build emits graph.html — an interactive map of how your pages link to each other — plus graph.json and Graphviz DOT for further analysis.',
   },
   {
-    icon: LuLayoutTemplate,
+    icon: PiLayout,
     title: 'Landing pages too',
     body: 'markers landing builds a whole single-page site — marketing, waitlist, docs hub, linktree — from one landing.yaml, with 12 layouts and 64 themes.',
   },
   {
-    icon: LuGlobe,
+    icon: PiGlobe,
     title: 'Wikipedia importer',
     body: 'markers wiki convert turns any Wikipedia article into clean local Markdown, rewriting internal links to filenames so whole wikis become browsable sites.',
   },
   {
-    icon: LuBot,
+    icon: PiRobot,
     title: 'MCP server',
     body: 'markers-mcp exposes build, serve and site inspection as MCP tools — let your editor or agent work with the docs directly.',
   },
