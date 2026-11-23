@@ -363,8 +363,8 @@ const LandingPage = (): JSX.Element => (
             web server.
           </>
         }
-        primary={{ label: 'Deploy guide', href: '/docs/deploy/' }}
-        secondary={{ label: 'Browse the docs', href: '/docs/' }}
+        primary={{ label: 'Download', href: '/downloads/' }}
+        secondary={{ label: 'View Docs', href: '/docs/' }}
       />
     </main>
   </>
