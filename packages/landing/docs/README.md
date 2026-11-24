@@ -67,3 +67,10 @@ site.
 
 - **[Architecture](project/architecture.md)** — the Cargo workspace, the build
   pipeline, and how to develop `markers` itself.
+
+## Installation guides
+
+- [CLI on macOS (Apple Silicon)](guide/how-to-install-cli-macos-silicon.md)
+- [CLI on macOS (Intel)](guide/how-to-install-cli-macos-intel.md)
+- [CLI on Linux](guide/how-to-install-cli-linux.md)
+- [CLI on Windows](guide/how-to-install-cli-windows.md)
