@@ -9,3 +9,4 @@ target/
 # Node
 node_modules/
 .tracers-cache/
+.tracers/cache/
